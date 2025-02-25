@@ -12,17 +12,17 @@ public class AdjustWindow {
     private Stage primaryStage;
     private Region root;
     private String resizeMode;
-    private boolean isResizing;  // Flag to control resizing state
-    private boolean isMoving;    // Flag to control window moving
+    private boolean isResizing; // Flag to control resizing state
+    private boolean isMoving; // Flag to control window moving
     private double xOffset, yOffset;
 
     public AdjustWindow(Stage primaryStage, Region root) {
         this.primaryStage = primaryStage;
         this.root = root;
         this.resizeMode = "";
-        this.isResizing = false;  // Start with resizing off
-        this.isMoving = false;    // Start with moving off
-        initializeResizing();     // Call resizing logic
+        this.isResizing = false;
+        this.isMoving = false;
+        initializeResizing(); // Call resizing logic
     }
 
     public void initializeResizing() {
@@ -30,21 +30,22 @@ public class AdjustWindow {
 
         // Resize cursor changes when moving over the edges or corners
         root.setOnMouseMoved(event -> {
-            if (!isResizing && !isMoving) {  // Only update cursor when not resizing or moving
+            // Only update cursor when not resizing or moving
+            if (!isResizing && !isMoving) {
                 boolean leftEdge = event.getX() <= borderThickness;
                 boolean rightEdge = event.getX() >= root.getWidth() - borderThickness;
                 boolean topEdge = event.getY() <= borderThickness;
                 boolean bottomEdge = event.getY() >= root.getHeight() - borderThickness;
 
-                if (leftEdge && topEdge) root.setCursor(Cursor.NW_RESIZE);  // Top-left corner
-                else if (rightEdge && topEdge) root.setCursor(Cursor.NE_RESIZE);  // Top-right corner
-                else if (leftEdge && bottomEdge) root.setCursor(Cursor.SW_RESIZE);  // Bottom-left corner
-                else if (rightEdge && bottomEdge) root.setCursor(Cursor.SE_RESIZE);  // Bottom-right corner
-                else if (leftEdge) root.setCursor(Cursor.W_RESIZE);  // Left edge
-                else if (rightEdge) root.setCursor(Cursor.E_RESIZE);  // Right edge
-                else if (topEdge) root.setCursor(Cursor.N_RESIZE);  // Top edge
-                else if (bottomEdge) root.setCursor(Cursor.S_RESIZE);  // Bottom edge
-                else root.setCursor(Cursor.DEFAULT);  // Default cursor when not near any edge
+                if (leftEdge && topEdge) root.setCursor(Cursor.NW_RESIZE);
+                else if (rightEdge && topEdge) root.setCursor(Cursor.NE_RESIZE);
+                else if (leftEdge && bottomEdge) root.setCursor(Cursor.SW_RESIZE);
+                else if (rightEdge && bottomEdge) root.setCursor(Cursor.SE_RESIZE);
+                else if (leftEdge) root.setCursor(Cursor.W_RESIZE);
+                else if (rightEdge) root.setCursor(Cursor.E_RESIZE);
+                else if (topEdge) root.setCursor(Cursor.N_RESIZE);
+                else if (bottomEdge) root.setCursor(Cursor.S_RESIZE);
+                else root.setCursor(Cursor.DEFAULT);
             }
         });
 
@@ -53,51 +54,58 @@ public class AdjustWindow {
             if (!isResizing && !isMoving) {  // Only process the press if we're not resizing or moving
                 if (event.getX() <= 10 && event.getY() <= 10) {  // Top-left corner
                     resizeMode = "TOP_LEFT";
-                } else if (event.getX() >= primaryStage.getWidth() - 10 && event.getY() <= 10) {  // Top-right corner
+                } else if (event.getX() >= primaryStage.getWidth() - 10 &&
+                        event.getY() <= 10) {
                     resizeMode = "TOP_RIGHT";
-                } else if (event.getX() <= 10 && event.getY() >= primaryStage.getHeight() - 10) {  // Bottom-left corner
+                } else if (event.getX() <= 10 &&
+                        event.getY() >= primaryStage.getHeight() - 10) {
                     resizeMode = "BOTTOM_LEFT";
-                } else if (event.getX() >= primaryStage.getWidth() - 10 && event.getY() >= primaryStage.getHeight() - 10) {  // Bottom-right corner
+                } else if (event.getX() >= primaryStage.getWidth() - 10 &&
+                        event.getY() >= primaryStage.getHeight() - 10) {
                     resizeMode = "BOTTOM_RIGHT";
-                } else if (event.getX() <= 10) {  // Left edge
+                } else if (event.getX() <= 10) {
                     resizeMode = "LEFT";
-                } else if (event.getX() >= primaryStage.getWidth() - 10) {  // Right edge
+                } else if (event.getX() >= primaryStage.getWidth() - 10) {
                     resizeMode = "RIGHT";
-                } else if (event.getY() <= 10) {  // Top edge
+                } else if (event.getY() <= 10) {
                     resizeMode = "TOP";
-                } else if (event.getY() >= primaryStage.getHeight() - 10) {  // Bottom edge
+                } else if (event.getY() >= primaryStage.getHeight() - 10) {
                     resizeMode = "BOTTOM";
                 } else {
-                    resizeMode = "";  // No resizing if not on an edge
+                    resizeMode = ""; // No resizing if not on an edge
                 }
 
-                if (!resizeMode.isEmpty()) {  // Only start resizing if we are on an edge or corner
+                if (!resizeMode.isEmpty()) {
+                    // Only start resizing if we are on an edge or corner
                     isResizing = true;  // Start resizing
                     initialX = event.getScreenX();
                     initialY = event.getScreenY();
                     initialWidth = primaryStage.getWidth();
                     initialHeight = primaryStage.getHeight();
-                } else {  // If not on an edge, prepare for moving the window
+                } else {
+                    // If not on an edge, prepare for moving the window
+                    isMoving = true;
                     xOffset = event.getSceneX();
                     yOffset = event.getSceneY();
-                    isMoving = true;
                 }
             }
         });
 
         // Handle the mouse dragging logic for resizing
         root.setOnMouseDragged(event -> {
-            if (isResizing) {  // Only resize if the flag is set
+            if (isResizing) {
+                // Only resize if the flag is set
                 double deltaX = event.getScreenX() - initialX;
                 double deltaY = event.getScreenY() - initialY;
                 double newWidth, newHeight;
 
+                // Resize the window
                 switch (resizeMode) {
                     case "TOP":
                         newHeight = initialHeight - deltaY;
                         if (newHeight > 100) {
                             primaryStage.setHeight(newHeight);
-                            primaryStage.setY(initialY + deltaY);  // Move the top
+                            primaryStage.setY(initialY + deltaY);
                         }
                         break;
                     case "BOTTOM":
@@ -110,7 +118,7 @@ public class AdjustWindow {
                         newWidth = initialWidth - deltaX;
                         if (newWidth > 100) {
                             primaryStage.setWidth(newWidth);
-                            primaryStage.setX(initialX + deltaX);  // Move the left
+                            primaryStage.setX(initialX + deltaX);
                         }
                         break;
                     case "RIGHT":
@@ -124,11 +132,11 @@ public class AdjustWindow {
                         newHeight = initialHeight - deltaY;
                         if (newWidth > 100) {
                             primaryStage.setWidth(newWidth);
-                            primaryStage.setX(initialX + deltaX);  // Move the left
+                            primaryStage.setX(initialX + deltaX);
                         }
                         if (newHeight > 100) {
                             primaryStage.setHeight(newHeight);
-                            primaryStage.setY(initialY + deltaY);  // Move the top
+                            primaryStage.setY(initialY + deltaY);
                         }
                         break;
                     case "TOP_RIGHT":
@@ -139,7 +147,7 @@ public class AdjustWindow {
                         }
                         if (newHeight > 100) {
                             primaryStage.setHeight(newHeight);
-                            primaryStage.setY(initialY + deltaY);  // Move the top
+                            primaryStage.setY(initialY + deltaY);
                         }
                         break;
                     case "BOTTOM_LEFT":
@@ -147,7 +155,7 @@ public class AdjustWindow {
                         newHeight = initialHeight + deltaY;
                         if (newWidth > 100) {
                             primaryStage.setWidth(newWidth);
-                            primaryStage.setX(initialX + deltaX);  // Move the left
+                            primaryStage.setX(initialX + deltaX);
                         }
                         if (newHeight > 100) {
                             primaryStage.setHeight(newHeight);
@@ -164,16 +172,17 @@ public class AdjustWindow {
                         }
                         break;
                 }
-            } else if (isMoving) {  // Only allow moving if not resizing
+            } else if (isMoving) {
+                // Only move the window if not resizing
                 primaryStage.setX(event.getScreenX() - xOffset);
                 primaryStage.setY(event.getScreenY() - yOffset);
             }
         });
 
-        // Reset resizing or moving flag on mouse release
+        // Reset flags after releasing the mouse
         root.setOnMouseReleased(event -> {
-            isResizing = false;  // Stop resizing when the mouse is released
-            isMoving = false;    // Stop moving when the mouse is released
+            isResizing = false;
+            isMoving = false;
         });
     }
 }
