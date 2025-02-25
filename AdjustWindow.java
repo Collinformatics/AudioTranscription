@@ -4,6 +4,9 @@ import javafx.scene.Cursor;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
+
+// This class will allow us to move or change the size of a window
+
 public class AdjustWindow {
     private double initialX, initialY, initialWidth, initialHeight;
     private Stage primaryStage;
