@@ -10,6 +10,10 @@ import javafx.stage.StageStyle;
 import javafx.scene.input.KeyCode;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
+import javafx.scene.control.TextArea;
+import javafx.stage.Screen;
+import javafx.geometry.Insets;
+
 
 
 
@@ -17,73 +21,145 @@ public class UI extends Application {
     // Define colors as strings
     private static final String red = "#FF0000";
     private static final String redLight = "#DE2828";
+    private static final String redMedium = "#8D0000";
     private static final String redDark = "#560000";
     private static final String green = "#39FF14";
     private static final String greenDark= "#003000";
+    private static final String pink = "#EE00FF";
     private static final String grey = "#303030";
     private static final String greyDark = "#252525";
     private static final String black = "#202020";
     private static final String titleBarColor = "#171717";
-
-    private double xOffset = 0;
-    private double yOffset = 0;
 
     // Text parameters
     String buttonFont = "Verdana";
     int buttonFontSize = 22;
 
     // Program parameters
-    private boolean isRecording = false; // Toggle state
+    private boolean isRecording = false;
+    private double windowWidth = 600;
+    private double windowHeight = Screen.getPrimary().getVisualBounds().getHeight();
+    private double headerHeight = 40;
+    private double spacer = 10;
+
 
 
     @Override
     public void start(Stage primaryStage) {
         primaryStage.initStyle(StageStyle.UNDECORATED); // Remove OS title bar
+        primaryStage.setResizable(true);  // Ensure the stage can be resized
+
+        // ========================== Initialize Root Container ==========================
+        BorderPane root = new BorderPane();
+        root.setStyle("-fx-background-color: " + grey + ";"); // Window background
+        root.setPadding(Insets.EMPTY);
+
+        //
+        Scene scene = new Scene(root, windowWidth, windowHeight);
 
         // ================================== Title Bar ==================================
         HBox titleBar = new HBox();
-        titleBar.setStyle("-fx-background-color: " + titleBarColor + "; " +
-                          "-fx-padding: 10px;");
-
-        // Vertically center the content within the HBox
-        titleBar.setAlignment(Pos.CENTER_LEFT); // Align items to the left, but center vertically
+        titleBar.setStyle(String.format("-fx-background-color: %s; " +
+                "-fx-padding: 0px;", titleBarColor));
+        titleBar.setPrefHeight(headerHeight);
 
         // Application Title
         Label title = new Label("Audio Transcription");
         title.setStyle(String.format("-fx-text-fill: %s; " +
                         "-fx-font-family: %s; " +
-                        "-fx-font-size: %spx;",
+                        "-fx-font-size: %spx;" +
+                        "-fx-padding: 0 0 0 10px;", // Padding: top, right, bottom, left
                 green, buttonFont, buttonFontSize-4));
 
-        // Center the text vertically within the label
-        title.setAlignment(Pos.CENTER); // Vertically center the label text
-        Region spacer = new Region();
-        HBox.setHgrow(spacer, Priority.ALWAYS);
+        // Align window title
+        titleBar.setAlignment(Pos.CENTER_LEFT);
+        title.setAlignment(Pos.CENTER); // Vertical alignment
+
+        Region spacerTitle = new Region();
+        HBox.setHgrow(spacerTitle, Priority.ALWAYS);
 
         // Close button
         Button closeButton = new Button("X");
-        closeButton.setStyle(String.format("-fx-background-color: %s; " +
-                "-fx-text-fill: white; " +
-                "-fx-font-size: 14px;", redLight));
+        // Default button style (grey)
+        String styleDefaultClose = String.format(
+                "-fx-background-color: %s; " +
+                "-fx-text-fill: %s; " +
+                "-fx-font-size: 16px; " +
+                "-fx-font-weight: bold; " +
+                "-fx-padding: 0;",
+                greyDark, grey, greyDark);
+
+        // Hover button style (red)
+        String styleHoverClose = String.format(
+                "-fx-background-color: %s; " +
+                "-fx-text-fill: %s; " +
+                "-fx-font-size: 16px; " +
+                "-fx-font-weight: bold; " +
+                "-fx-padding: 0;",
+                redMedium, redLight, redMedium);
+
+        // Close button
+        closeButton.setStyle(styleDefaultClose);  // Set default style
+
+        // Set the button size to fit the header height
+        closeButton.setMinSize(headerHeight - 10, headerHeight - 10);
+        closeButton.setMaxSize(headerHeight - 10, headerHeight - 10);
+
+        // Ensure text is centered within the button
+        closeButton.setAlignment(Pos.CENTER);  // Center text in the button
+
+        // Button hover effect
+        closeButton.setOnMouseEntered(e ->
+                closeButton.setStyle(styleHoverClose));
+        closeButton.setOnMouseExited(e ->
+                closeButton.setStyle(styleDefaultClose));
         closeButton.setOnAction(e -> primaryStage.close());
+        
+        
+        HBox.setMargin(closeButton, new Insets(0, 5, 0, 0));
+        closeButton.setMinSize(headerHeight - 10, headerHeight - 10);
+        closeButton.setMaxSize(headerHeight - 10, headerHeight - 10);
 
         // Add title, spacer, and close button to the title bar
-        titleBar.getChildren().addAll(title, spacer, closeButton);
+        titleBar.getChildren().addAll(title, spacerTitle, closeButton);
+        root.setTop(titleBar);
 
-        // Enable window dragging
-        titleBar.setOnMousePressed(event -> {
-            xOffset = event.getSceneX();
-            yOffset = event.getSceneY();
-        });
+        // Create instance of the ResizeWindow class
+        AdjustWindow resizingHandler = new AdjustWindow(primaryStage, root);
+        resizingHandler.initializeResizing(); // Initialize resizing functionality
 
-        titleBar.setOnMouseDragged(event -> {
-            primaryStage.setX(event.getScreenX() - xOffset);
-            primaryStage.setY(event.getScreenY() - yOffset);
-        });
+        // ================================= Main Layout =================================
+        VBox centerPane = new VBox(0); // VBox with spacing
+        centerPane.setStyle(String.format("-fx-background-color: %s", greyDark));
+        centerPane.setAlignment(Pos.TOP_CENTER); // Center the children horizontally
 
+        centerPane.setPadding(new Insets(spacer, spacer, 0,  spacer));
+
+        // ================================== Text Box ===================================
+        TextArea textBox = new TextArea();
+        VBox.setVgrow(textBox, Priority.ALWAYS); // Use all available vertical space
+        textBox.setEditable(false);
+        textBox.setWrapText(true);
+        textBox.setStyle(String.format(
+                "-fx-background-color: %s; " +
+                        "-fx-border-color: %s; " +
+                        "-fx-border-width: 3px; " +
+                        "-fx-border-radius: 5px; " +
+                        "-fx-text-fill: %s; " +
+                        "-fx-font-family: %s; " +
+                        "-fx-font-size: %spx; " +
+                        "-fx-control-inner-background: %s; " +
+                        "-fx-background-insets: 0, 0, 0, 0;" +
+                        "-fx-highlight-fill: %s; " +
+                        "-fx-highlight-text-fill: %s;",
+                grey, black, green, buttonFont, buttonFontSize, grey, green, pink));
+
+        // Set text
+        textBox.setText("Words words words, words words words and more words.");
 
         // ================================ Record Button ================================
         Button button = new Button("Record");
+
         // Set button size
         int buttonWidth = 200;
         int buttonHeight = 60;
@@ -129,10 +205,10 @@ public class UI extends Application {
 
         button.setStyle(defaultStyle);
         button.setOnMouseEntered(e -> {
-            button.setStyle(hoverStyle);  // Change background to greenDark when hovered
+            button.setStyle(hoverStyle); // Change background when hovered
         });
         button.setOnMouseExited(e -> {
-            button.setStyle(defaultStyle);  // Revert to default style when the mouse leaves
+            button.setStyle(defaultStyle); // Change to default background color
         });
 
         // Toggle color on click
@@ -147,31 +223,19 @@ public class UI extends Application {
             }
         });
 
-        // Create an invisible focusable StackPane
-        StackPane focusPane = new StackPane();
-        focusPane.setStyle("-fx-background-color: transparent;"); // Make it invisible
+        // Create a VBox to dynamically hold the button at the bottom
+        VBox buttonContainer = new VBox(spacer);
+        buttonContainer.setAlignment(Pos.BOTTOM_CENTER);
+        buttonContainer.setSpacing(0);
+        buttonContainer.setPadding(new Insets(spacer*2, 0, spacer*2,  0));
+        buttonContainer.getChildren().addAll(button);
 
-        // Allow it to capture key events
-        focusPane.setFocusTraversable(true);
+        //============================== Add The Containers ==============================
+        centerPane.getChildren().add(textBox);
+        centerPane.getChildren().add(buttonContainer);
+        root.setCenter(centerPane);
 
-        // Ensure focus is applied after UI is rendered
-        Platform.runLater(() -> focusPane.requestFocus());
-
-
-        // ================================= Main Layout =================================
-        StackPane centerPane = new StackPane();
-        centerPane.setStyle("-fx-background-color: " + greyDark + ";");
-        centerPane.getChildren().add(button);
-
-        // ======= Main Layout =======
-        BorderPane root = new BorderPane();
-        root.setTop(titleBar); // Add custom title bar
-        root.setCenter(centerPane); // Empty content for now
-        root.setStyle("-fx-background-color: " + grey + ";"); // Dark background
-
-        // Create the scene
-        Scene scene = new Scene(root, 600, 900);
-
+        // ================================ Miscellaneous ================================
         // Keyboard shortcuts
         scene.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ESCAPE) {
