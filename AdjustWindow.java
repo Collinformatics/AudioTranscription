@@ -179,7 +179,7 @@ public class AdjustWindow {
         });
 
         // Reset flags after releasing the mouse
-        root.setOnMouseReleased(event -> {
+        root.setOnMouseReleased(_ -> {
             isResizing = false;
             isMoving = false;
         });
