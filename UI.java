@@ -140,6 +140,7 @@ public class UI extends Application {
         VBox.setVgrow(textBox, Priority.ALWAYS); // Use all available vertical space
         textBox.setEditable(false);
         textBox.setWrapText(true);
+        // Default style for the TextArea
         textBox.setStyle(String.format(
                 "-fx-background-color: %s; " +
                         "-fx-border-color: %s; " +
@@ -150,12 +151,15 @@ public class UI extends Application {
                         "-fx-font-size: %spx; " +
                         "-fx-control-inner-background: %s; " +
                         "-fx-background-insets: 0, 0, 0, 0;" +
+                        "-fx-focus-color: transparent; " +
                         "-fx-highlight-fill: %s; " +
-                        "-fx-highlight-text-fill: %s;",
+                        "-fx-highlight-text-fill: %s;" +
+                        "-fx-faint-focus-color: transparent;",
                 grey, black, green, buttonFont, buttonFontSize, grey, green, pink));
 
         // Set text
         textBox.setText("Words words words, words words words and more words.");
+
 
         // ================================ Record Button ================================
         Button button = new Button("Record");
@@ -171,7 +175,7 @@ public class UI extends Application {
         button.setMaxHeight(buttonHeight);
 
         // Default button style
-        String defaultStyle = String.format(
+        String styleDefault = String.format(
                 "-fx-background-color: %s; " +
                         "-fx-text-fill: %s; " +
                         "-fx-padding: 10px; " +
@@ -182,7 +186,7 @@ public class UI extends Application {
                 black, green, green, buttonFont, buttonFontSize);
 
         // Button hover style
-        String hoverStyle = String.format(
+        String styleHover = String.format(
                 "-fx-background-color: %s; " +
                         "-fx-text-fill: %s; " +
                         "-fx-padding: 10px; " +
@@ -203,12 +207,17 @@ public class UI extends Application {
                         "-fx-font-size: %spx; ",
                 redDark, red, red, buttonFont, buttonFontSize);
 
-        button.setStyle(defaultStyle);
+        button.setStyle(styleDefault);
+        // Change the default button color when hovered over
         button.setOnMouseEntered(e -> {
-            button.setStyle(hoverStyle); // Change background when hovered
+            if (!isRecording) {
+                button.setStyle(styleHover); // Apply hover style if not recording
+            }
         });
         button.setOnMouseExited(e -> {
-            button.setStyle(defaultStyle); // Change to default background color
+            if (!isRecording) {
+                button.setStyle(styleDefault); // Apply default style if not recording
+            }
         });
 
         // Toggle color on click
@@ -216,10 +225,10 @@ public class UI extends Application {
             isRecording = !isRecording; // Toggle state
             if (isRecording) {
                 button.setText("Stop Recording");
-                button.setStyle(recordingStyle); // Change to red when recording
+                button.setStyle(recordingStyle); // Set the red color when recording
             } else {
                 button.setText("Record");
-                button.setStyle(defaultStyle); // Change back to green when stopped
+                button.setStyle(styleDefault); // Set back to default (green) when stopped
             }
         });
 
@@ -258,3 +267,4 @@ public class UI extends Application {
         launch(args);
     }
 }
+
