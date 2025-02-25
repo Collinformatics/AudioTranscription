@@ -25,7 +25,7 @@ public class AdjustWindow {
     }
 
     public void initializeResizing() {
-        double borderThickness = 10; // Edge detection thickness
+        double borderThickness = 7; // Edge detection thickness
 
         // Resize cursor changes when moving over the edges or corners
         root.setOnMouseMoved(event -> {
