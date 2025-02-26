@@ -27,7 +27,7 @@ After installation, find the python executable file with the terminal:
         pwd
         /your/path
 
-  - combine the paths to get the full path:
+  - combine the two paths to get the full path:
 
     /your/path/AppData/Local/Programs/Python/Python313/python.exe
 
