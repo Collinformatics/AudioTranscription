@@ -40,7 +40,8 @@ After installation, find the python executable file with the terminal:
 
   Paste the path to the python interpreter under "Python SDK home path"
 
-- Install python modules:
+
+Install python modules:
 
   Activate the venv:
 
