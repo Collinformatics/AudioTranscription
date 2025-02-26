@@ -27,36 +27,26 @@ After installation, find the python executable file with the terminal:
         pwd
         /your/path
 
-  - combine the two paths to get the full path:
+  - combine the two paths to get the full path to your interpreter:
 
     /your/path/AppData/Local/Programs/Python/Python313/python.exe
 
 
-Create a virtual envrionment (venv) in the java envionment:
-
-- Go back to the Java IDE, and open a new terminal shell.
-
-  Use the following command to create a venv for python scripts with the path we just found:
-
-      /your/path/AppData/Local/Programs/Python/Python313/python.exe -m venv venv
-
-Set up the python interpreter for the project:
-
-- Find the .exe file in you venv directory:
-
-        find . -name python.exe 2>/dev/null
-        ./Scripts/python.exe
-
-  Press keys "Alt" & "1" to open the Project folder.
-
-  Follow the folder path to find "python.exe"
-
-  Right click on the executable file and copy the path.
-
-- Add the interpreter path:
+- Add the interpreter path to your IDE:
 
   Go to the drop-down menu option, and select "File" -> "Project Structure"
 
   After clicking on "Project Structure", click on "Modules" then the "+" icon.
 
   Paste the path to the python interpreter under "Python SDK home path"
+
+- Install python modules:
+
+  Activate the venv:
+
+        source venv/bin/activate
+
+  Install modules with pip:
+
+        pip install pandas
+
