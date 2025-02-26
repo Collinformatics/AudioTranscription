@@ -1,4 +1,4 @@
-# Setup: Intellij Idea
+# Setup: Intellij Idea Environment
 
 Install python if you dont already have in on your computer:
 
