@@ -29,7 +29,7 @@ After installation, find the python executable file with the terminal:
 
   - combine the paths to get the full path:
 
-    /your/path/toFiles/toFiles/AppData/Local/Programs/Python/Python313/python.exe
+    /your/path/AppData/Local/Programs/Python/Python313/python.exe
 
 
 Create a virtual envrionment (venv) in the java envionment:
