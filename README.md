@@ -45,5 +45,8 @@ Set up the python interpreter for the project:
 - Find the .exe file in you venv file
 
         find . -name python.exe 2>/dev/null
+        ./Scripts/python.exe
 
-  Combine the paths
+  Press keys "Alt" & "1" to open the Project folder, open the folders to find "python.exe"
+
+  
