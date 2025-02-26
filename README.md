@@ -25,11 +25,11 @@ Find the python executable file with the terminal:
         path = /yourPath/AppData/Local/Programs/Python/Python313/python.exe
 
 
-Create a venv in the java envionment:
+Create a virtual envrionment (venv) in the java envionment:
 
 - Go back to the Java IDE, and open a new terminal shell.
 
-  Use the following command to create a virtual envrionment (venv) for python scripts with the path we just found:
+  Use the following command to create a venv for python scripts with the path we just found:
 
       /yourPath/AppData/Local/Programs/Python/Python313/python.exe -m venv venv
       
