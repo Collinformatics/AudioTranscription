@@ -1,20 +1,18 @@
 package com.example.audiotranscription;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
+import javafx.application.Platform;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.Scene;
 import javafx.scene.layout.*;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.scene.input.KeyCode;
-import javafx.application.Platform;
-import javafx.geometry.Pos;
-import javafx.scene.control.TextArea;
 import javafx.stage.Screen;
-import javafx.geometry.Insets;
-
-
 
 
 public class UI extends Application {
@@ -41,7 +39,10 @@ public class UI extends Application {
     private double windowHeight = Screen.getPrimary().getVisualBounds().getHeight();
     private double headerHeight = 40;
     private double spacer = 10;
+    public String messages = "Words";
 
+    // Initalize microphone
+    Microphone microphone = new Microphone();
 
 
     @Override
@@ -225,10 +226,11 @@ public class UI extends Application {
             isRecording = !isRecording; // Toggle state
             if (isRecording) {
                 button.setText("Stop Recording");
-                button.setStyle(recordingStyle); // Set the red color when recording
+                button.setStyle(recordingStyle);
+                microphone.runPythonScript(messages);
             } else {
                 button.setText("Record");
-                button.setStyle(styleDefault); // Set back to default (green) when stopped
+                button.setStyle(styleDefault);
             }
         });
 
@@ -256,9 +258,9 @@ public class UI extends Application {
 
             }
         });
-        // Ensure the scene gets focus after the UI is fully loaded
-        Platform.runLater(() -> scene.getRoot().requestFocus());
 
+        // Focus the scene after the UI is loaded
+        Platform.runLater(() -> scene.getRoot().requestFocus());
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -267,4 +269,3 @@ public class UI extends Application {
         launch(args);
     }
 }
-
