@@ -20,9 +20,14 @@ Find the python executable file with the terminal:
 
       ./AppData/Local/Programs/Python/Python313/python.exe
 
-  Use the get your current working directory to get the first part of the path to your executable file then combine them:
+  Use pwd to get your current working directory:
 
-        path = /yourPath/AppData/Local/Programs/Python/Python313/python.exe
+        pwd
+        /your/path
+
+  combine the paths to get the full path:
+
+  /your/path/toFiles/toFiles/AppData/Local/Programs/Python/Python313/python.exe
 
 
 Create a virtual envrionment (venv) in the java envionment:
@@ -31,6 +36,6 @@ Create a virtual envrionment (venv) in the java envionment:
 
   Use the following command to create a venv for python scripts with the path we just found:
 
-      /yourPath/AppData/Local/Programs/Python/Python313/python.exe -m venv venv
+      /your/path/AppData/Local/Programs/Python/Python313/python.exe -m venv venv
       
 
