@@ -24,6 +24,8 @@ Find the python executable file with the terminal:
 
         path = /yourPath/AppData/Local/Programs/Python/Python313/python.exe
 
-Create a virtual envrionment (venv) for python scripts with that path:
+Open a new terminal shell in the Intellij IDE, and use the following command to create a virtual envrionment (venv) for python scripts with the path we just found:
+
+      /yourPath/AppData/Local/Programs/Python/Python313/python.exe -m venv venv
       
 
