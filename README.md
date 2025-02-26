@@ -1,8 +1,10 @@
 # Setup: Intellij Idea
 
-Install python if you dont already have in on your computer.
+Install python if you dont already have in on your computer:
 
-Find the python executable file with the terminal:
+      https://www.python.org/downloads/
+
+After installation, find the python executable file with the terminal:
 
 - Open your computers terminal app (dont use the Intellij terminal) and run the command:
 
@@ -37,5 +39,11 @@ Create a virtual envrionment (venv) in the java envionment:
   Use the following command to create a venv for python scripts with the path we just found:
 
       /your/path/AppData/Local/Programs/Python/Python313/python.exe -m venv venv
-      
 
+Set up the python interpreter for the project:
+
+- Find the .exe file in you venv file
+
+        find . -name python.exe 2>/dev/null
+
+  Combine the paths
