@@ -29,16 +29,15 @@ It is recommended that you give them the same name, such as "AudioTranscription"
 
   After clicking on "Project Structure", click on "Modules" then the "+" icon.
 
-  Paste the path to the python interpreter under "Python SDK home path"
+  Paste the path to the Python interpreter under "Python SDK home path"
 
+Install modules:
 
-Install python modules:
+- Go back to the Pycharm terminal and install necessary python modules with the pip
 
-- Activate the venv:
+      pip install deepmultilingualpunctuation
 
-        source venv/bin/activate
+      pip install SpeechRecognition
 
-- Install modules with pip:
-
-        pip install pandas
+      pip install PyAudio
 
