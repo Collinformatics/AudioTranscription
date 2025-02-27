@@ -12,7 +12,7 @@ public class Mic {
     private static final String pathPython = currentDir + "/src/main/python/mic.py";
 
     // Define color schemes
-    String styleLabelInactive = String.format(
+    String styleLabelMicOff = String.format(
             "-fx-text-fill: %s; " +
                     "-fx-padding: 0px; " +
                     "-fx-font-family: %s; " +
@@ -65,7 +65,7 @@ public class Mic {
                             labelMicState.setStyle(styleLabelProcessing);
                         } else if (outputCopy.contains("Mic Off")) {
                             labelMicState.setText("Off");
-                            labelMicState.setStyle(styleLabelInactive);
+                            labelMicState.setStyle(styleLabelMicOff);
                         }
                     });
                     fullOutput.append(output).append("\n");
@@ -80,4 +80,3 @@ public class Mic {
         return task;
     }
 }
-
