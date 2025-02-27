@@ -24,9 +24,9 @@ After creating a project in both IDEs, add a Python interperter to the Intillij 
 
       C:\Users\AccountName\PycharmProjects\AudioTranscription\.venv\Scripts\python.exe
 
-- Add the interpreter path to your IDE:
+- Add the interpreter path to the Intellij IDE:
 
-  Go to the drop-down menu option, and select "File" -> "Project Structure"
+  Go back to Intellij and open the drop-down menu option, and select "File" -> "Project Structure"
 
   After clicking on "Project Structure", click on "Modules" then the "+" icon.
 
