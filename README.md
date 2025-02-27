@@ -2,10 +2,9 @@
 
 To run the scripts out of IDEs with these instructions, you will need to have Intellij and Pycharm installed on your computer.
 
-
-In Pycharm, use the IDE terminal to find the python executable file:
-
-- Open your computers terminal app (dont use the Intellij terminal) and run the command:
+- Finding the Python interpreter:
+  
+  In Pycharm, use the IDE's terminal to find the python executable file with the command:
 
       find . -name python.exe 2>/dev/null
 
