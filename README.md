@@ -43,11 +43,11 @@ After installation, find the python executable file with the terminal:
 
 Install python modules:
 
-  Activate the venv:
+- Activate the venv:
 
         source venv/bin/activate
 
-  Install modules with pip:
+- Install modules with pip:
 
         pip install pandas
 
