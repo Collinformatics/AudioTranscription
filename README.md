@@ -1,6 +1,10 @@
 # Setup: Intellij Idea @ Pycharm Environments
 
-To run the scripts out of IDEs with these instructions, you will need to have Intellij and Pycharm installed on your computer.
+To run the scripts out of IDEs with these instructions, you will need to have Intellij and Pycharm installed on your computer. 
+
+You will need to make a project in each application. 
+
+It is recommended that you give them the same name, such as "AudioTranscription"
 
 - Finding the Python interpreter:
   
@@ -12,25 +16,12 @@ To run the scripts out of IDEs with these instructions, you will need to have In
 
         ./.venv/Scripts/python.exe
 
-  This will be followed by a folder with a name that describes the version of python
+  Open the folder tab in the top left corner of the IDE, and follow the path the the python.exe file.
 
-  Ex: Python313
+  Click on the file and copy its path.
+    This should look similar to this:
 
-      Python313 = version 3.13
-
-  Your partial path in the terminal to the exexutable should look like:
-
-      ./AppData/Local/Programs/Python/Python313/python.exe
-
-  Use pwd to get your current working directory:
-
-        pwd
-        /your/path
-
-  - combine the two paths to get the full path to your interpreter:
-
-    /your/path/AppData/Local/Programs/Python/Python313/python.exe
-
+      C:\Users\<computername>\PycharmProjects\AudioTranscription\.venv\Scripts\python.exe
 
 - Add the interpreter path to your IDE:
 
