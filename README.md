@@ -19,9 +19,10 @@ It is recommended that you give them the same name, such as "AudioTranscription"
   Open the folder tab in the top left corner of the IDE, and follow the path the the python.exe file.
 
   Click on the file and copy its path.
-    This should look similar to this:
 
-      C:\Users\<computername>\PycharmProjects\AudioTranscription\.venv\Scripts\python.exe
+  The path should look similar to this:
+
+      C:\Users\AccountName\PycharmProjects\AudioTranscription\.venv\Scripts\python.exe
 
 - Add the interpreter path to your IDE:
 
