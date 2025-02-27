@@ -1,16 +1,17 @@
-# Setup: Intellij Idea Environment
+# Setup: Intellij Idea @ Pycharm Environments
 
-Install python if you dont already have in on your computer:
+To run the scripts out of IDEs with these instructions, you will need to have Intellij and Pycharm installed on your computer.
 
-      https://www.python.org/downloads/
 
-After installation, find the python executable file with the terminal:
+In Pycharm, use the IDE terminal to find the python executable file:
 
 - Open your computers terminal app (dont use the Intellij terminal) and run the command:
 
       find . -name python.exe 2>/dev/null
 
-  The executable file should be in a path that contains: Programs/Python/
+  The executable file should be in a path that looks like:
+
+        ./.venv/Scripts/python.exe
 
   This will be followed by a folder with a name that describes the version of python
 
