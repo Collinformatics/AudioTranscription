@@ -38,6 +38,8 @@ Install modules:
 
       pip install deepmultilingualpunctuation
 
+      pip install openai-whisper
+
       pip install PyAudio
 
       pip install SpeechRecognition
