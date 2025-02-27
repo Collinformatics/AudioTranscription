@@ -6,9 +6,9 @@ You will need to make a project in each application.
 
 It is recommended that you give them the same name, such as "AudioTranscription"
 
-- Finding the Python interpreter:
-  
-  In Pycharm, use the IDE's terminal to find the python executable file with the command:
+After creating a project in both IDEs, add a Python interperter to the Intillij project: 
+
+- In Pycharm, use the IDE's terminal to find the python executable file with the command:
 
       find . -name python.exe 2>/dev/null
 
@@ -38,7 +38,7 @@ Install modules:
 
       pip install deepmultilingualpunctuation
 
-      pip install SpeechRecognition
-
       pip install PyAudio
+
+      pip install SpeechRecognition
 
