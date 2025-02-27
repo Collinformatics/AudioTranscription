@@ -70,9 +70,6 @@ def recordAudio():
 def testAudio():
     print('Processing Audio')
 
-    time.time(2)
-    print()
-
 
 flagRecord = bool(int(sys.argv[1]))  # Convert "1" -> True, "0" -> False
 flag2 = bool(int(sys.argv[2]))
