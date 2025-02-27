@@ -13,36 +13,48 @@ import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Screen;
+import javafx.scene.text.TextAlignment;
+
+import javafx.concurrent.Task;
+
 
 
 public class UI extends Application {
     // Define colors as strings
-    private static final String red = "#FF0000";
-    private static final String redLight = "#DE2828";
-    private static final String redMedium = "#8D0000";
-    private static final String redDark = "#560000";
-    private static final String green = "#39FF14";
-    private static final String greenDark= "#003000";
-    private static final String pink = "#EE00FF";
-    private static final String grey = "#303030";
-    private static final String greyDark = "#252525";
-    private static final String black = "#202020";
-    private static final String titleBarColor = "#171717";
+    public static final String red = "#FF0000";
+    public static final String redLight = "#DE2828";
+    public static final String redMedium = "#8D0000";
+    public static final String redDark = "#560000";
+    public static final String green = "#39FF14";
+    public static final String greenMedium = "#085500";
+    public static final String greenDark= "#003000";
+    public static final String pink = "#EE00FF";
+    public static final String grey = "#303030";
+    public static final String greyDark = "#252525";
+    public static final String black = "#202020";
+    public static final String titleBarColor = "#171717";
 
     // Text parameters
-    String buttonFont = "Verdana";
-    int buttonFontSize = 22;
+    public static final String buttonFont = "Verdana";
+    public static final int buttonFontSize = 22;
 
     // Program parameters
+    public String pythonExe = "path/python.exe";
     private boolean isRecording = false;
-    private double windowWidth = 600;
-    private double windowHeight = Screen.getPrimary().getVisualBounds().getHeight();
-    private double headerHeight = 40;
-    private double spacer = 10;
+    private boolean initialRun = true;
+    private final double windowWidth = 600;
+    private final double windowHeight = Screen.getPrimary().getVisualBounds().getHeight();
+    private final double headerHeight = 40;
+    private final double spacer = 10;
+    public final int buttonWidth = 200;
+    public final int buttonHeight = 60;
+    public final int stateMicLabelWidth = 148;
+    public final int stateMicWidth = 200;
+    public final int stateMicHeight = 60;
     public String messages = "Words";
 
-    // Initalize microphone
-    Microphone microphone = new Microphone();
+    // Initalize microphone class
+    Mic mic = new Mic();
 
 
     @Override
@@ -133,9 +145,56 @@ public class UI extends Application {
         VBox centerPane = new VBox(0); // VBox with spacing
         centerPane.setStyle(String.format("-fx-background-color: %s", greyDark));
         centerPane.setAlignment(Pos.TOP_CENTER); // Center the children horizontally
+        centerPane.setPadding(new Insets(0, spacer, 0,  spacer));
 
-        centerPane.setPadding(new Insets(spacer, spacer, 0,  spacer));
+        // ============================== Microphone Status ==============================
+        Label labelMic = new Label("Microphone:");
+        labelMic.setMinWidth(stateMicLabelWidth);
+        labelMic.setPrefWidth(stateMicLabelWidth);
+        labelMic.setMaxWidth(stateMicLabelWidth);
+        labelMic.setMinHeight(stateMicHeight);
+        labelMic.setPrefHeight(stateMicHeight);
+        labelMic.setMaxHeight(stateMicHeight);
 
+        // Define label styles
+        String styleLabelDefault = String.format(
+                "-fx-background-color: %s; " +
+                        "-fx-text-fill: %s; " +
+                        "-fx-padding: 0px; " +
+                        "-fx-font-family: %s; " +
+                        "-fx-font-size: %spx; ",
+                greyDark, green, buttonFont, buttonFontSize);
+        labelMic.setStyle(styleLabelDefault);
+        labelMic.setAlignment(Pos.CENTER_LEFT);
+        labelMic.setTextAlignment(TextAlignment.CENTER);
+
+        // Create the second input, for example a TextField
+        Label labelMicState = new Label("Off");
+        labelMicState.setMinWidth(stateMicWidth); // Adjust as necessary
+        labelMicState.setPrefWidth(stateMicWidth); // Adjust as necessary
+        labelMicState.setMaxWidth(buttonWidth); // Adjust as necessary
+        labelMicState.setMinHeight(stateMicHeight);
+        labelMicState.setPrefHeight(stateMicHeight);
+        labelMicState.setMaxHeight(stateMicHeight);
+        labelMicState.setStyle(styleLabelDefault);
+
+        // Create an HBox to arrange the microphone labels
+        HBox container = new HBox(spacer);
+        container.setAlignment(Pos.CENTER_LEFT);
+        container.setSpacing(0);
+        container.setPadding(new Insets(0, spacer, 0, 0));
+
+        // Add the components to the HBox
+        container.getChildren().addAll(labelMic, labelMicState);
+
+        // Create a VBox to store the microphone state
+        VBox containerLabel = new VBox(spacer);
+        containerLabel.setAlignment(Pos.CENTER);
+        containerLabel.setSpacing(0);
+        containerLabel.setPadding(new Insets(0, 0, 0,  0));
+        containerLabel.getChildren().addAll(container);
+        
+        
         // ================================== Text Box ===================================
         TextArea textBox = new TextArea();
         VBox.setVgrow(textBox, Priority.ALWAYS); // Use all available vertical space
@@ -159,15 +218,12 @@ public class UI extends Application {
                 grey, black, green, buttonFont, buttonFontSize, grey, green, pink));
 
         // Set text
-        textBox.setText("Words words words, words words words and more words.");
-
+        textBox.setText("Words words words.");
 
         // ================================ Record Button ================================
         Button button = new Button("Record");
 
         // Set button size
-        int buttonWidth = 200;
-        int buttonHeight = 60;
         button.setMinWidth(buttonWidth);
         button.setPrefWidth(buttonWidth);
         button.setMaxWidth(buttonWidth);
@@ -198,7 +254,7 @@ public class UI extends Application {
                 greenDark, green, green, buttonFont, buttonFontSize);
 
         // Recording button style
-        String recordingStyle = String.format(
+        String styleRecording = String.format(
                 "-fx-background-color: %s; " +
                         "-fx-text-fill: %s; " +
                         "-fx-padding: 10px; " +
@@ -221,29 +277,61 @@ public class UI extends Application {
             }
         });
 
-        // Toggle color on click
+        // Press the button
         button.setOnAction(e -> {
             isRecording = !isRecording; // Toggle state
+            String pythonOutput;
+
             if (isRecording) {
+                // Start recording
                 button.setText("Stop Recording");
-                button.setStyle(recordingStyle);
-                microphone.runPythonScript(messages);
+                button.setStyle(styleRecording);
+
+                // Run python script
+                Task<String> task = mic.runPythonScript(pythonExe,
+                        1, 0, labelMicState);
+                task.setOnSucceeded(event -> {
+                    // Update the microphone label
+                    String result = task.getValue();
+                });
+                task.setOnFailed(event -> {
+                    labelMicState.setText("Error running Python script.");
+                });
+
+                // Start the background task
+                new Thread(task).start();
             } else {
+                // Stop recording
                 button.setText("Record");
                 button.setStyle(styleDefault);
+
+                // Run python script
+                Task<String> task = mic.runPythonScript(pythonExe,
+                        0, 1, labelMicState);
+                task.setOnSucceeded(event -> {
+                    // Update the microphone label
+                    String result = task.getValue();
+                });
+                task.setOnFailed(event -> {
+                    labelMicState.setText("Error running Python script.");
+                });
+
+                // Start the background task
+                new Thread(task).start();
             }
         });
 
-        // Create a VBox to dynamically hold the button at the bottom
-        VBox buttonContainer = new VBox(spacer);
-        buttonContainer.setAlignment(Pos.BOTTOM_CENTER);
-        buttonContainer.setSpacing(0);
-        buttonContainer.setPadding(new Insets(spacer*2, 0, spacer*2,  0));
-        buttonContainer.getChildren().addAll(button);
+        // Create a VBox to store the button
+        VBox containerButton = new VBox(spacer);
+        containerButton.setAlignment(Pos.BOTTOM_CENTER);
+        containerButton.setSpacing(0);
+        containerButton.setPadding(new Insets(spacer*2, 0, spacer*2,  0));
+        containerButton.getChildren().addAll(button);
 
         //============================== Add The Containers ==============================
+        centerPane.getChildren().add(containerLabel);
         centerPane.getChildren().add(textBox);
-        centerPane.getChildren().add(buttonContainer);
+        centerPane.getChildren().add(containerButton);
         root.setCenter(centerPane);
 
         // ================================ Miscellaneous ================================
