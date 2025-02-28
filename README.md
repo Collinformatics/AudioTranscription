@@ -97,5 +97,7 @@ Install modules:
 
       pip install PyAudio
 
+      pip install soundfile
+
       pip install SpeechRecognition
 
