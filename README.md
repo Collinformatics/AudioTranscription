@@ -57,10 +57,21 @@ Next we will need to set up Python.
 
   If it matches, then click on the "Apply" button and close the window.
 
+  - Add intrepreter to UI.java:
+
+    Find the line and add the path as a string:
+
+       public String pythonExe = "C:/path/to/your/python.exe";
 
 Install modules:
 
-- Go to the Intillij terminal and install necessary python modules with the pip
+- Go to the Intillij terminal:
+
+  Acitvate the conda envionment
+
+      conda activate envAudio
+
+  Install necessary python modules with the pip
 
       pip install deepmultilingualpunctuation
 
