@@ -1,51 +1,54 @@
-# Setup: Intellij Idea @ Pycharm Environments
+# Setup: Intellij Idea
 
-To run the scripts out of IDEs with these instructions, you will need to have Intellij and Pycharm installed on your computer. 
+For these instructions, make sure that your Java envionment in Intillij has the JavaFX plugin
 
-You will need to make a project in each application.
+- Install Python plugin at:
 
-It is recommended that you give them the same name, such as "AudioTranscription"
+  File | Project Structure
 
-Make sure that your Java envionment in Intillij has the JavaFX plugin
+  Click on Modules in the left column, select the folder for your project in the column to the right
 
-After creating a project in both IDEs, add a Python interperter to the Intillij project: 
+  Then click the "+" icon, and click on "New Module" in the drop down window
 
-- In Pycharm, use the IDE's terminal to find the python executable file with the command:
+  Click on "More via plugins" in the bottom left corner of the "New Module" window
 
-      find . -name python.exe 2>/dev/null
+  In the "Install Plugin" popup, click on "Python" to add the module
 
-  The executable file should be in a path that looks like:
+  Restart the IDE
 
-        ./.venv/Scripts/python.exe
+- Create Python Interpreter:
 
-  Open the folder tab in the top left corner of the IDE, and follow the path the the python.exe file.
+  Go back to the "Project Structure" window, under the left column select "SDKs"
 
-  Click on the file and copy its path.
+  Click the "+" icon, and click on "Add Python SDK from disk"
 
-  The path should look similar to this:
+  In the new pop up window select "Conda Environment"
 
-      C:\Users\AccountName\PycharmProjects\AudioTranscription\.venv\Scripts\python.exe
+  Select the option "New Environment"
 
-- Add the interpreter path to the Intellij IDE:
+  In the "Location:" input bar make sure the path contains: 
 
-  Go back to Intellij and open the drop-down menu option, and select "File" -> "Project Structure"
-
-  After clicking on "Project Structure", click on "Modules" then the "+" icon.
-
-  Select: Python
-  - If Python is not in the dropdown then close the dropdown and click on the folder with the project name to highlight it and reclick on the "+" icon
-
-  Click on the "+" icon in the Configure SDK pop up window, and select "Add Python SDK from Disk"
-
-  Select the "Existing envrionment" and paste the path to the python interpreter from Pycharm
+  - miniconda3\envs\evnAudio
   
-  Find the row that is titled "Base Interpreter" and click on the icon on the right side of this row 
+  My interpreter will be named "evnAudio" but you can change this to name it whatever you want, just make sure that no other interpreters in the "envs" folder have the same name
 
-  A window will pop up, paste the path to the Python interpreter in the input bar and press "OK"
+  Press the "OK" button to create the interpreter
 
-  Close the remaining pop up windows untill you are back at the "Project Structure" window.
 
-  Use the "Python Interpreter" drop down to select the new Python .venv that we just added, and click on the "Apply" button in the bottom right corner of the window
+- Add Python Interpreter:
+
+  In the "Project Structure" window, click on "Modules"
+
+  Select the project folder in the column to the right, and then click on "+"
+
+  In the dropdown, click on "Python"
+
+  To the right you should see the input for "Python Interpreter"
+
+  It should contain a path to the Python executable file (python.exe) that is found in the path to the interpreter envAudio, that we just create
+
+  If it matches, then click on the "Apply" button and close the window.
+
 
 Install modules:
 
