@@ -6,7 +6,7 @@ Make sure that your project has the JavaFX plugin.
 
 After JavaFx is setup we can clone the AudioTranscription repository
 
-- Clone instructions:
+- Cloning the github instructions:
 
   * Make instructions <---------------------------------------------------------------------
 
