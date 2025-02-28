@@ -91,7 +91,7 @@ Install modules:
 
       pip install deepmultilingualpunctuation
 
-      pip install openai-whisper
+      pip install faster-whisper
 
       pip install PyAudio
 
