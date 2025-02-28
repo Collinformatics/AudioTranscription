@@ -43,7 +43,7 @@ Next we will need to set up Python.
   Press the "OK" button to create the interpreter
 
 
-- Add Python Interpreter:
+- Add Python Interpreter to IDE
 
   In the "Project Structure" window, click on "Modules"
 
@@ -57,11 +57,27 @@ Next we will need to set up Python.
 
   If it matches, then click on the "Apply" button and close the window.
 
-  - Add intrepreter to UI.java:
+  - Testing Python Interpreter:
 
-    Find the line and add the path as a string:
+    Follow the folders in your IDE to: AudioTranscription\src\main\python\test.py
 
-        public String pythonExe = "C:/path/to/your/python.exe";
+    Run the script to see if the string prints correctly
+
+    If it works the path to your interpreter should directly above the string
+
+    Find the text and copy the path:
+
+        C:\Users\acountname\miniconda3\envs\envAudio\python.exe
+
+- Add intrepreter to UI.java:
+
+  Find the line that looks like this in the java script:
+
+      public String pythonExe = "C:\path\to\python.exe";
+
+  Update the path with the text just copied:
+
+      public String pythonExe = "C:\Users\acountname\miniconda3\envs\envAudio\python.exe";
 
 Install modules:
 
