@@ -61,7 +61,7 @@ Next we will need to set up Python.
 
     Find the line and add the path as a string:
 
-       public String pythonExe = "C:/path/to/your/python.exe";
+        public String pythonExe = "C:/path/to/your/python.exe";
 
 Install modules:
 
