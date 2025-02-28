@@ -54,7 +54,7 @@ After that is setup we will need to set up Python.
 
 Install modules:
 
-- Go back to the Pycharm terminal and install necessary python modules with the pip
+- Go to the Intillij terminal and install necessary python modules with the pip
 
       pip install deepmultilingualpunctuation
 
