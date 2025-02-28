@@ -5,25 +5,28 @@ import java.io.InputStreamReader;
 import javafx.concurrent.Task;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 
 
 public class Mic {
     private static final String currentDir = System.getProperty("user.dir");
     private static final String pathPython = currentDir + "/src/main/python/mic.py";
 
-    // Define color schemes
+    // Define color schemes for the microphone label styles
     String styleLabelMicOff = String.format(
             "-fx-text-fill: %s; " +
                     "-fx-padding: 0px; " +
                     "-fx-font-family: %s; " +
                     "-fx-font-size: %spx; ",
             UI.greenMedium, UI.buttonFont, UI.buttonFontSize);
+
     String styleLabelMicOn = String.format(
             "-fx-text-fill: %s; " +
                     "-fx-padding: 0px; " +
                     "-fx-font-family: %s; " +
                     "-fx-font-size: %spx; ",
             UI.red, UI.buttonFont, UI.buttonFontSize);
+
     String styleLabelProcessing = String.format(
             "-fx-text-fill: %s; " +
                     "-fx-padding: 0px; " +
@@ -31,50 +34,85 @@ public class Mic {
                     "-fx-font-size: %spx; ",
             UI.pink, UI.buttonFont, UI.buttonFontSize);
 
-    public Task<String> runPythonScript(String pythonExe, int flagTest, int flagNew,
-                                        Label labelMicState) {
+    // Error handling method to update the TextArea in the UI
+    public void updateTextAreaWithError(String errorMessage, TextArea textArea) {
+        Platform.runLater(() -> {
+            textArea.appendText("\n" + errorMessage + "\n");
+        });
+    }
+
+    public Task<String> runPythonScript(String pythonExe, int flagTest,
+                                    Label labelMicState, TextArea textArea) {
         Task<String> task = new Task<String>() {
             @Override
             protected String call() throws Exception {
-                // Run python script
-                ProcessBuilder pythonScript = new ProcessBuilder(pythonExe, pathPython,
-                        Integer.toString(flagTest), Integer.toString(flagNew));
-                pythonScript.redirectErrorStream(true); // Merge stdout and stderr
+                try {
+                    ProcessBuilder pythonScript =
+                            new ProcessBuilder(pythonExe, pathPython,
+                                    Integer.toString(flagTest));
+                    pythonScript.redirectErrorStream(true); // Merge stdout and stderr
 
-                Process process = pythonScript.start();
+                    Process process = pythonScript.start();
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(process.getInputStream()));
 
-                // Continuously read the output while the process is running
-                BufferedReader reader = new BufferedReader(
-                        new InputStreamReader(process.getInputStream()));
-                String output;
-                StringBuilder fullOutput = new StringBuilder();
+                    String output;
+                    StringBuilder fullOutput = new StringBuilder();
+                    StringBuilder errorBuffer = new StringBuilder(); // Buffer to capture multi-line errors
 
-                while ((output = reader.readLine()) != null) {
-                    final String outputCopy = output;
+                    boolean isError = false;
 
-                    System.out.println("Py Output: " + outputCopy);
+                    while ((output = reader.readLine()) != null) {
+                        final String outputCopy = output;
+                        System.out.println(outputCopy); // Print normal output for debugging
 
-                    // Use Platform.runLater to update the UI thread
-                    Platform.runLater(() -> {
-                        // Update the microphone label
-                        if (outputCopy.contains("Mic On")) {
-                            labelMicState.setText("On");
-                            labelMicState.setStyle(styleLabelMicOn);
-                        } else if (outputCopy.contains("Processing")) {
-                            labelMicState.setText("Processing Audio");
-                            labelMicState.setStyle(styleLabelProcessing);
-                        } else if (outputCopy.contains("Mic Off")) {
-                            labelMicState.setText("Off");
-                            labelMicState.setStyle(styleLabelMicOff);
+                        // Check if it's an error (traceback)
+                        if (outputCopy.startsWith("Traceback (most recent call last):")) {
+                            isError = true; // Start capturing traceback lines
+                            errorBuffer.setLength(0); // Clear buffer
                         }
-                    });
-                    fullOutput.append(output).append("\n");
-                }
-                reader.close();
 
-                // Wait for the process to finish
-                process.waitFor();
-                return fullOutput.toString().trim();
+                        if (isError) {
+                            errorBuffer.append(outputCopy).append("\n"); // Append traceback lines
+                        }
+
+                        // If traceback ends, send the full error to the UI
+                        if (isError && outputCopy.trim().isEmpty()) {
+                            isError = false; // End of error message
+                            String fullError = errorBuffer.toString();
+                            Platform.runLater(() -> updateTextAreaWithError("\n" + fullError, textArea));
+                        }
+
+                        // Handle regular messages
+                        Platform.runLater(() -> {
+                            if (outputCopy.contains("Mic On")) {
+                                labelMicState.setText("On");
+                                labelMicState.setStyle(styleLabelMicOn);
+                            } else if (outputCopy.contains("Processing")) {
+                                labelMicState.setText("Processing Audio");
+                                labelMicState.setStyle(styleLabelProcessing);
+                            } else if (outputCopy.contains("Mic Off")) {
+                                labelMicState.setText("Off");
+                                labelMicState.setStyle(styleLabelMicOff);
+                            }
+                        });
+
+                        fullOutput.append(output).append("\n");
+                    }
+                    reader.close();
+
+                    // If an error was still being captured, flush it
+                    if (errorBuffer.length() > 0) {
+                        String fullError = errorBuffer.toString();
+                        Platform.runLater(() -> updateTextAreaWithError("\n" + fullError, textArea));
+                    }
+
+                    process.waitFor();
+                    return fullOutput.toString().trim();
+                } catch (Exception e) {
+                    Platform.runLater(() -> updateTextAreaWithError("\nJava Error: " + e.getMessage(), textArea));
+                    return null;
+                }
             }
         };
         return task;
