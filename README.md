@@ -6,7 +6,7 @@ After that is setup we will need to set up Python.
 
 - Install Python plugin at:
 
-  File | Project Structure
+  Open the "File" dropdown and select "Project Structure"
 
   Click on Modules in the left column, select the folder for your project in the column to the right
 
