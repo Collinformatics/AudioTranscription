@@ -65,13 +65,13 @@ Next we will need to set up Python.
 
     If it works the path to your interpreter should directly above the string
 
-    Find the text and copy the path:
+    The path should look something like this, find the text and copy it:
 
         C:\Users\acountname\miniconda3\envs\envAudio\python.exe
 
 - Add intrepreter to UI.java:
 
-  Find the line that looks like this in the java script:
+  Find the line that looks like this in the UI.java script:
 
       public String pythonExe = "C:\path\to\python.exe";
 
