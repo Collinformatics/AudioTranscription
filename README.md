@@ -1,6 +1,8 @@
 # Setup: Intellij Idea
 
-For these instructions, make sure that your Java envionment in Intillij has the JavaFX plugin
+For these instructions, make sure that your Java envionment in Intillij has the JavaFX plugin.
+
+After that is setup we will need to set up Python.
 
 - Install Python plugin at:
 
