@@ -1,13 +1,8 @@
-import os
-import sys
-import threading
-import speech_recognition as sr
-
-
 # Define file paths
 pathDirLogs = os.getcwd() + '/logs'
 pathDirLogs = pathDirLogs.replace('/', '\\')
-isRecording = False
+
+# Printing outputs
 sys.stderr = sys.stdout
 
 
@@ -54,13 +49,11 @@ def loadMessage(pathDirectory):
 
 def recordAudio():
     messages = loadMessage(pathDirectory=pathDirLogs)
-
     recognizer = sr.Recognizer()
     microphone = sr.Microphone()
 
-    isRecording = True
-
     # Records and transcribe audio
+    isRecording = True
     with microphone as source:
         recognizer.adjust_for_ambient_noise(source)
         while isRecording:
@@ -72,6 +65,7 @@ def recordAudio():
                 print('Mic Off', flush=True)
                 if text != '':
                     logConversation(pathDirLogs, messages, text)
+                isRecording = False
             except sr.UnknownValueError:
                 messages += 'Could not understand the audio.'
             except sr.RequestError:
@@ -85,3 +79,4 @@ if flagRecord:
     recordAudio()
 else:
     isRecording = False
+    
