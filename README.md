@@ -53,7 +53,6 @@ Next we will need to set up Python.
 
   Press the "OK" button to create the interpreter
 
-
 - Add Python Interpreter to IDE
 
   In the "Project Structure" window, click on "Modules"
@@ -70,15 +69,21 @@ Next we will need to set up Python.
 
   - Testing Python Interpreter:
 
-    Follow the folders in your IDE to: AudioTranscription\src\main\python\test.py
+    Follow the folders in your IDE to:
 
-    Run the script to see if the string prints correctly
+        AudioTranscription\src\main\python\test.py
 
-    If it works the path to your interpreter should directly above the string
+    Run test.py to evaluate:
 
-    The path should look something like this, find the text and copy it:
+    - Python interpreter setup
+      
+    - GPU Usage (this is only relevant if your computer has an NVIDIA graphics card)
 
-        C:\Users\acountname\miniconda3\envs\envAudio\python.exe
+    If the test is passed, the path to your interpreter should printed on the first line of your console
+
+    - The path should look something like this, find the text and copy it:
+
+          C:\Users\acountname\miniconda3\envs\envAudio\python.exe
 
 - Add intrepreter to UI.java:
 
