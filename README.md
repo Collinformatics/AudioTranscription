@@ -9,8 +9,15 @@ This program will allow you to record a message, and convert an audio recording 
 
 - Intellij Idea Community Edition 2024.3.4
   - With JavaFX plugin installed
+    - Versions: (The first two digets must match your Java SDK that you have in Intelleij)
+      - 21.0.6 [LTS]
+      - 17.0.14
+
+        https://gluonhq.com/products/javafx/
 
 - Miniconda3
+
+      https://repo.anaconda.com/miniconda/
 
 - If you have an NVIDIA GPU install:
   - NVIDIA (R) Cuda compiler driver V12.5.40
