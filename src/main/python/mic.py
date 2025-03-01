@@ -59,7 +59,7 @@ def recordAudio():
             audio = recognizer.listen(source, timeout=5)
             print('Processing Audio', flush=True)
             text = f'{recognizer.recognize_faster_whisper(audio).strip()}'
-            if text != '':
+            if text != '' and text != '.  .  .  .':
                 print('_text_')
             print(f'_text_{text}')
             logConversation(pathDirLogs, text)
