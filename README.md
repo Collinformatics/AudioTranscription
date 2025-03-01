@@ -7,6 +7,7 @@
 
 - If you have an NVIDIA GPU install:
   - NVIDIA (R) Cuda compiler driver
+  - NVIDIA cuDNN 12.5
 
 
 
