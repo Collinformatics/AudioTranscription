@@ -8,7 +8,7 @@ pathDirLogs = os.getcwd() + '/logs'
 pathDirLogs = pathDirLogs.replace('/', '\\')
 
 # Printing outputs
-# sys.stderr = sys.stdout
+sys.stderr = sys.stdout
 
 
 def logConversation(pathDirectory, text):
