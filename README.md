@@ -31,7 +31,9 @@ This program will allow you to record a message, and convert an audio recording 
 
 # Installing Program:
 
-- These instruction were made for working with an Intellij Idea IDE 
+- These instruction were made for working with an Intellij Idea IDE
+
+Download recommended software before continuing.
 
 Clone github repository:
 
