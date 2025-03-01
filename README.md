@@ -13,13 +13,9 @@
 
 # Setup: Intellij Idea
 
-These instruction were made for working with an Intellij Idea IDE 
+- These instruction were made for working with an Intellij Idea IDE 
 
-Make sure that your project has the JavaFX plugin.
-
-After JavaFx is setup we can clone the AudioTranscription repository
-
-- Cloning the github instructions:
+Clone github repository:
 
   * Make instructions <---------------------------------------------------------------------
 
