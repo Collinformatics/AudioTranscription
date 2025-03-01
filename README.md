@@ -1,3 +1,15 @@
+# Recomened Software:
+
+- Intellij Idea Community Edition 2024.3.4
+  - With JavaFX plugin installed
+
+- Miniconda3
+
+- If you have an NVIDIA GPU install:
+  - NVIDIA (R) Cuda compiler driver
+
+
+
 # Setup: Intellij Idea
 
 These instruction were made for working with an Intellij Idea IDE 
