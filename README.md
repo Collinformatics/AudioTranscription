@@ -9,9 +9,9 @@ This program will allow you to record a message, and convert an audio recording 
 
 - Intellij Idea Community Edition 2024.3.4
   - With JavaFX plugin installed
-    - Versions: (The first two digets must match your Java SDK that you have in Intelleij)
-      - 21.0.6 [LTS]
-      - 17.0.14
+    - Versions:
+      - 21.0.6 [LTS] (Use if your running Java version 23.X.X in your envioronment)
+      - 17.0.14 [LTS]
 
         https://gluonhq.com/products/javafx/
 
