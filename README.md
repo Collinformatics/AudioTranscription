@@ -17,7 +17,7 @@ This program will allow you to record a message, and convert an audio recording 
 
 
 
-# Setup: Intellij Idea
+# Setup:
 
 - These instruction were made for working with an Intellij Idea IDE 
 
