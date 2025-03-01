@@ -1,4 +1,4 @@
-# Recomened Software:
+# Recomened Software for Instalation:
 
 - Intellij Idea Community Edition 2024.3.4
   - With JavaFX plugin installed
@@ -6,8 +6,8 @@
 - Miniconda3
 
 - If you have an NVIDIA GPU install:
-  - NVIDIA (R) Cuda compiler driver
-  - NVIDIA cuDNN 12.5
+  - NVIDIA (R) Cuda compiler driver V12.5.40
+  - NVIDIA cuDNN V12.5
 
 
 
