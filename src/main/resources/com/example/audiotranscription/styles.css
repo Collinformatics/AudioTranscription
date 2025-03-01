@@ -1,0 +1,25 @@
+/* Hide the scroll bar arrow buttons and remove the space they occupy */
+.text-area .scroll-bar .increment-button,
+.text-area .scroll-bar .decrement-button {
+    -fx-background-color: transparent;  /* Make buttons invisible */
+    -fx-opacity: 0;  /* Make buttons fully transparent */
+    -fx-padding: 0;  /* Remove padding */
+    -fx-pref-width: 0; /* Remove width for buttons */
+    -fx-pref-height: 0; /* Remove height for buttons */
+}
+
+/* Color: Scrollbar background */
+.text-area .scroll-bar {
+    -fx-background-color: #252525; /* Black background */
+}
+
+/* Color: Scrollbar thumb */
+.text-area .scroll-bar .thumb {
+    -fx-background-color: #303030; /* Dark gray thumb */
+    -fx-background-radius: 5px;
+}
+
+/* Color: Scrollbar track */
+.text-area .scroll-bar .track {
+    -fx-background-color: #202020; /* Darker track */
+}
