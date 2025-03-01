@@ -34,6 +34,15 @@ public class Mic {
                     "-fx-font-size: %spx; ",
             UI.pink, UI.buttonFont, UI.buttonFontSize);
 
+    // Declare the button globally
+    public Button button;
+
+    public void initializeUI() {
+        // Initialize the button
+        button = new Button("Record");
+    }
+
+
     // Error handling method to update the TextArea in the UI
     public void updateTextAreaWithError(String errorMessage, TextArea textArea) {
         Platform.runLater(() -> {
@@ -41,8 +50,9 @@ public class Mic {
         });
     }
 
-    public Task<String> runPythonScript(String pythonExe, int flagTest, int initializeUI,
-                                    Label labelMicState, TextArea textArea) {
+    public Task<String> runPythonScript(String pythonExe, int flagTest,
+                                        int initializeUI, Label labelMicState,
+                                        TextArea textArea, Button button) {
         Task<String> task = new Task<String>() {
             @Override
             protected String call() throws Exception {
@@ -54,8 +64,7 @@ public class Mic {
                     pythonScript.redirectErrorStream(true); // Merge stdout and stderr
 
                     Process process = pythonScript.start();
-                    BufferedReader reader = new BufferedReader(
-                            new InputStreamReader(process.getInputStream()));
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
                     String output;
                     StringBuilder fullOutput = new StringBuilder();
@@ -86,7 +95,7 @@ public class Mic {
                                     "\n" + fullError, textArea));
                         }
 
-                        // Handle regular messages
+                        // Update UI
                         Platform.runLater(() -> {
                             if (outputCopy.contains("Mic On")) {
                                 labelMicState.setText("On");
@@ -97,6 +106,11 @@ public class Mic {
                             } else if (outputCopy.contains("Mic Off")) {
                                 labelMicState.setText("Off");
                                 labelMicState.setStyle(styleLabelMicOff);
+                                button.setText("Record");
+                                button.setStyle(UI.styleDefault);
+                            } else if (outputCopy.startsWith("_text_")) {
+                                String textMessage = outputCopy.substring(6);
+                                textArea.appendText(textMessage + "\n");
                             }
                         });
 
