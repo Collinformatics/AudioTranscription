@@ -1,3 +1,9 @@
+# Purpose
+
+Do you have an essay to write, and no time to write it yourself?
+
+This program will allow you to tell your computer what you want to say and it will convert an audio recording into text that you can copy and paste your essay, paper, dissertation, or whatever kind of writing project you want to work on.
+
 # Recomened Software for Instalation:
 
 - Intellij Idea Community Edition 2024.3.4
