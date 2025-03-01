@@ -40,6 +40,9 @@ public class UI extends Application {
     public String pythonExe = "C:\\Users\\Yeti\\miniconda3\\envs\\envAudio\\python.exe";
     public int initialRun = 1;
     private boolean isRecording = false;
+
+
+
     private final double windowWidth = 600;
     private final double windowHeight = Screen.getPrimary().getVisualBounds().getHeight();
     private final double headerHeight = 40;
@@ -49,10 +52,18 @@ public class UI extends Application {
     public final int stateMicLabelWidth = 148;
     public final int stateMicWidth = 420;
     public final int stateMicHeight = 60;
+    public static final String styleDefault = String.format(
+            "-fx-background-color: %s; " +
+            "-fx-text-fill: %s; " +
+            "-fx-padding: 10px; " +
+            "-fx-border-radius: 5px; " +
+            "-fx-border-color: %s; " +
+            "-fx-font-family: %s; " +
+            "-fx-font-size: %spx; ",
+            black, green, green, buttonFont, buttonFontSize);
 
     // Initialize microphone class
     Mic mic = new Mic();
-
 
     @Override
     public void start(Stage primaryStage) {
@@ -232,17 +243,6 @@ public class UI extends Application {
         button.setPrefHeight(buttonHeight);
         button.setMaxHeight(buttonHeight);
 
-        // Default button style
-        String styleDefault = String.format(
-                "-fx-background-color: %s; " +
-                        "-fx-text-fill: %s; " +
-                        "-fx-padding: 10px; " +
-                        "-fx-border-radius: 5px; " +
-                        "-fx-border-color: %s; " +
-                        "-fx-font-family: %s; " +
-                        "-fx-font-size: %spx; ",
-                black, green, green, buttonFont, buttonFontSize);
-
         // Button hover style
         String styleHover = String.format(
                 "-fx-background-color: %s; " +
@@ -291,7 +291,7 @@ public class UI extends Application {
                 // Run python script
                 Task<String> task =
                         mic.runPythonScript(pythonExe, 1, initialRun,
-                                labelMicState, textBox);
+                                labelMicState, textBox, button);
                 task.setOnSucceeded(event -> {
                     // Update the microphone label
                     String result = task.getValue();
@@ -316,7 +316,7 @@ public class UI extends Application {
                 // Run python script
                 Task<String> task =
                         mic.runPythonScript(pythonExe,0, initialRun,
-                                labelMicState, textBox);
+                                labelMicState, textBox, button);
                 task.setOnSucceeded(event -> {
                     // Update the microphone label
                     String result = task.getValue();
