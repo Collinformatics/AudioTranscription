@@ -89,8 +89,14 @@ public class UI extends Application {
         root.setStyle("-fx-background-color: " + grey + ";"); // Window background
         root.setPadding(Insets.EMPTY);
 
-        //
         Scene scene = new Scene(root, windowWidth, windowHeight);
+
+        // Position window on the right side of the monitor
+        double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
+        double xPosition = screenWidth - windowWidth;
+        primaryStage.setX(xPosition);
+        // primaryStage.setX(0); // To move the window to the left side use this
+        primaryStage.setY(0);
 
         // ================================== Title Bar ==================================
         HBox titleBar = new HBox();
