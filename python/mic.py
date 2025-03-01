@@ -1,3 +1,9 @@
+import os
+import sys
+import threading
+import speech_recognition as sr
+
+
 # Define file paths
 pathDirLogs = os.getcwd() + '/logs'
 pathDirLogs = pathDirLogs.replace('/', '\\')
