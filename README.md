@@ -4,6 +4,7 @@ Do you have an essay to write, and no time to write it yourself?
 
 This program will allow you to record a message, and convert an audio recording into text that you can copy and paste into your paper, shopping list, dissertation, or whatever kind of writing project you have.
 
+
 # Recomened Software for Instalation:
 
 - Intellij Idea Community Edition 2024.3.4
@@ -16,8 +17,7 @@ This program will allow you to record a message, and convert an audio recording 
   - NVIDIA cuDNN V12.5
 
 
-
-# Setup:
+# Installing Program:
 
 - These instruction were made for working with an Intellij Idea IDE 
 
