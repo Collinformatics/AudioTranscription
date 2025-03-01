@@ -1,6 +1,5 @@
 import os
 import sys
-import threading
 import speech_recognition as sr
 
 
@@ -12,22 +11,22 @@ pathDirLogs = pathDirLogs.replace('/', '\\')
 sys.stderr = sys.stdout
 
 
-def logConversation(pathDirectory, messages, text):
-    # Add messages
-    print(text)
+def logConversation(pathDirectory, messages):
+    for line in messages:
+        print(f'_text_{line}')
 
     # Make the directory
     if not os.path.exists(pathDirectory):
         os.makedirs(pathDirectory)
 
     # Log the message
-    messages.append(text)
     pathDirLogs = os.path.join(pathDirectory + r'\log.txt')
     with open(pathDirLogs, 'w') as file:
         # Append: 'a'
         # Write: 'w'
         for line in messages:
-            file.write(line)
+            file.write(f'{line}\n')
+    print('Mic Off', flush=True)
 
 
 def loadMessage(pathDirectory):
@@ -41,11 +40,11 @@ def loadMessage(pathDirectory):
         with open(pathLog, 'r') as file:
             messages = file.readlines()
     else:
-        messages = ['']
+        messages = []
 
     # Add messages
     if flagInitializeUI:
-        if messages != ['']:
+        if messages != []:
             for line in messages:
                 print(line)
 
@@ -60,22 +59,28 @@ def recordAudio():
 
     # Records and transcribe audio
     isRecording = True
-    with microphone as source:
+    with (microphone as source):
         recognizer.adjust_for_ambient_noise(source)
         while isRecording:
             try:
                 print('Mic On', flush=True)
-                audio = recognizer.listen(source, timeout=60)
+                audio = recognizer.listen(source, timeout=5)
                 print('Processing Audio', flush=True)
                 text = f'{recognizer.recognize_faster_whisper(audio).strip()}'
-                print('Mic Off', flush=True)
                 if text != '':
-                    logConversation(pathDirLogs, messages, text)
-                isRecording = False
+                    messages.append(text)
+                    logConversation(pathDirLogs, messages)
+                    isRecording = False
+
             except sr.UnknownValueError:
-                messages += 'Could not understand the audio.'
+                messages.append('Could not understand the audio.')
             except sr.RequestError:
-                messages += 'Could not request results, check your internet connection.'
+                messages.append('Could not request results, '
+                                'check your internet connection.')
+            except sr.WaitTimeoutError:
+                # Handle timeout error and stop recording
+                print("Mic Off", flush=True)
+                isRecording = False  # Stop recording on timeout
 
 
 # Use button inputs
@@ -85,4 +90,4 @@ if flagRecord:
     recordAudio()
 else:
     isRecording = False
-    
+    print('Mic Off')
