@@ -8,8 +8,7 @@ pathDirLogs = os.getcwd() + '/logs'
 pathDirLogs = pathDirLogs.replace('/', '\\')
 
 # Printing outputs
-sys.stderr = sys.stdout
-sys.stdout = open(os.devnull, 'w')
+# sys.stderr = sys.stdout
 
 
 def logConversation(pathDirectory, text):
@@ -54,7 +53,7 @@ def recordAudio():
     microphone = sr.Microphone()
 
     # Records and transcribe audio
-    isRecording = True
+    # isRecording = True
     with (microphone as source):
         recognizer.adjust_for_ambient_noise(source)
         # while isRecording:
@@ -68,7 +67,7 @@ def recordAudio():
                     print('_text_')
                 print(f'_text_{text}')
                 logConversation(pathDirLogs, text)
-                isRecording = False
+                # isRecording = False
 
         except sr.UnknownValueError:
             messages.append('Could not understand the audio.')
@@ -78,7 +77,7 @@ def recordAudio():
         except sr.WaitTimeoutError:
             # Handle timeout error and stop recording
             print("Mic Off", flush=True)
-            isRecording = False
+            # isRecording = False
 
 
 # Use button inputs
