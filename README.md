@@ -98,11 +98,11 @@ Install modules:
 
 - Go to the Intillij terminal:
 
-  Acitvate the conda envionment
+  Acitvate the conda envionment with:
 
       conda activate envAudio
 
-  Install necessary python modules with the pip
+  Install necessary python modules:
 
       pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 
