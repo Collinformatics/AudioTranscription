@@ -81,7 +81,7 @@ Next we will need to set up Python.
 
     If the test is passed, the path to your interpreter should printed on the first line of your console
 
-    - The path should look something like this, find the text and copy it:
+    - The path should look something like this, highlight the text and copy it:
 
           C:\Users\acountname\miniconda3\envs\envAudio\python.exe
 
