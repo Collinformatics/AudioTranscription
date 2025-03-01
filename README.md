@@ -104,6 +104,8 @@ Install modules:
 
   Install necessary python modules with the pip
 
+      pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+
       pip install deepmultilingualpunctuation
 
       pip install faster-whisper
