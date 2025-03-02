@@ -105,38 +105,38 @@ Next we will need to set up Python.
 
           C:\Users\acountname\miniconda3\envs\envAudio\python.exe
 
-- Add intrepreter to UI.java:
+Add intrepreter to UI.java:
 
-  Find the line that looks like this in the UI.java script:
+  - Find the line that looks like this in the UI.java script:
 
-      public String pythonExe = "C:\path\to\python.exe";
+        public String pythonExe = "C:\path\to\python.exe";
 
-  Update the path with the text just copied:
+ - Update the path with the text just copied:
 
-      public String pythonExe = "C:\Users\acountname\miniconda3\envs\envAudio\python.exe";
+        public String pythonExe = "C:\Users\acountname\miniconda3\envs\envAudio\python.exe";
 
 Install modules:
 
-Go to the Intillij terminal:
+- Go to the Intillij terminal:
 
-Show all conda environments:
+- Show all conda environments:
 
-    conda env list
+      conda env list
 
-Find your environment and acitvate it:
+- Find your environment and acitvate it:
 
         conda activate envAudio
 
-  Install necessary python modules:
+  - Install necessary python modules:
 
-      pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+        pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 
-      pip install deepmultilingualpunctuation
+        pip install deepmultilingualpunctuation
 
-      pip install faster-whisper
+        pip install faster-whisper
 
-      pip install PyAudio
+        pip install PyAudio
 
-      pip install soundfile
+        pip install soundfile
 
-      pip install SpeechRecognition
+        pip install SpeechRecognition
