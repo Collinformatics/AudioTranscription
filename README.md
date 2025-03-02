@@ -117,7 +117,7 @@ Next we will need to set up Python.
 
 Install modules:
 
-- Go to the Intillij terminal:
+Go to the Intillij terminal:
 
 Show all conda environments:
 
