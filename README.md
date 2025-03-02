@@ -115,58 +115,71 @@ Set up Python.
 
             - Lets change it to:
 
-                      /Users/accountname/miniconda3/envs/evnAudio
+                      /Users/accountname/miniconda3/envs/envAudio
 
-              This will name the virtual environment as: "evnAudio"
+              This will name the virtual environment as: "envAudio"
 
                 - My interpreter will be named "evnAudio" but you can change this to name it whatever you want, just make sure that no other interpreters in the "envs" folder have the same name
 
-              Click on the "OK" button to create the interpreter
+              Click on the "OK" button to create the virtual environment
 
-![Python Intrepreter](https://github.com/user-attachments/assets/89a92b21-8db9-4840-be44-7583b9300efb)
+              ![Python Intrepreter](https://github.com/user-attachments/assets/89a92b21-8db9-4840-be44-7583b9300efb)
+
+              When you get back to the "Project Structure" window, click on the "Apply" button
 
               
 - Add Python Interpreter to IDE
 
-  In the "Project Structure" window, click on "Modules"
+  - Click on "Modules"
 
-  Select the project folder in the column to the right, and then click on "+"
+    In the column to the right, find the project folder titled "AudioTranscription"
 
-  In the dropdown, click on "Python"
+    - Under this folder, you should see "Python"
 
-  To the right you should see the input for "Python Interpreter"
+      - Click on "Python"
 
-  It should contain a path to the Python executable file (python.exe) that is found in the path to the interpreter envAudio, that we just create
+        To the right you should see the input for "Python Interpreter"
 
-  If it matches, then click on the "Apply" button and close the window.
+        - Open the dropdown and select "envAudio"
+       
+          Click on the "Apply" button to add the interpreter
+
 
 Install modules:
 
 - Go to the Intillij terminal:
 
-- Activate conda environment and pip install
+  - If the command line starts with: (envAudio)
+
+    - Then the conda envrionment has been activated
+   
+- If it starts with: (base)
+
+  - Then we need to activate the conda environment:
   
-  Show all conda environments:
+    - Begin this process by inspecting all of your conda environments with this command:
 
-      conda env list
+            conda env list
 
-  Find your environment and acitvate it:
+      - Find your environment and acitvate it:
 
-        conda activate envAudio
+              conda activate envAudio
 
-  Install necessary python modules:
+  - When your environment has been activated:
 
-      pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+    - Install necessary python modules:
 
-      pip install deepmultilingualpunctuation
-
-      pip install faster-whisper
-
-      pip install PyAudio
-
-      pip install soundfile
-
-      pip install SpeechRecognition
+            pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+      
+            pip install deepmultilingualpunctuation
+      
+            pip install faster-whisper
+      
+            pip install PyAudio
+      
+            pip install soundfile
+      
+            pip install SpeechRecognition
 
 # Testing installation:
 
