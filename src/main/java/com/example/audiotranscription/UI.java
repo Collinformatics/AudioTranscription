@@ -37,7 +37,7 @@ public class UI extends Application {
     public static final int buttonFontSize = 22;
 
     // Program parameters
-    public String pythonExe = "C:\\Users\\Yeti\\miniconda3\\envs\\envAudio\\python.exe";
+    public String pythonExe = "C:\path\to\python.exe";
     public int initialRun = 1;
     private boolean isRecording = false;
 
