@@ -61,9 +61,19 @@ Setup the Project JDK:
 
 Install JavaFX Plugin:
 
-- Once you are back at the "Project Structure" window, click on "Modules", then go to the column on the right "AudioTranscription" folder, then click on the "+" icon
+- Once you are back at the "Project Structure" window, click on "Modules"
 
+  - Go to the column on the right "AudioTranscription" folder
 
+    - Click on the "+" icon, and select "New Module"
+    
+      - Find the "JavaFX" option in right column and select it
+   
+      - Name the module, and click on the "Next" buton
+
+      ![JavaFX](https://github.com/user-attachments/assets/e9ba349c-4117-4534-9c9c-6fc48a646ce8)
+
+  - 
 
 
 Set up Python.
