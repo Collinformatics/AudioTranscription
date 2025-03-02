@@ -93,30 +93,6 @@ Next we will need to set up Python.
 
         AudioTranscription\src\main\python\test.py
 
-    Run test.py to evaluate:
-
-    - If the Python interpreter was setup correctly
-      
-    - GPU Usage
-
-      - Only relevant if your computer has an NVIDIA graphics card
-
-    If the test is passed, the path to your interpreter should printed on the first line of your console
-
-    - The path should look something like this, highlight the text and copy it:
-
-          C:\Users\acountname\miniconda3\envs\envAudio\python.exe
-
-Add intrepreter to UI.java:
-
-  - Find the line that looks like this in the UI.java script:
-
-        public String pythonExe = "C:\path\to\python.exe";
-
- - Update the path with the text just copied:
-
-        public String pythonExe = "C:\Users\acountname\miniconda3\envs\envAudio\python.exe";
-
 Install modules:
 
 - Go to the Intillij terminal:
@@ -144,3 +120,29 @@ Install modules:
       pip install soundfile
 
       pip install SpeechRecognition
+
+# Testing installation:
+
+  Run test.py to evaluate:
+
+  - If the Python interpreter was setup correctly
+      
+  - GPU Usage
+
+    - Only relevant if your computer has an NVIDIA graphics card
+
+    If the test is passed, the path to your interpreter should printed on the first line of your console
+
+    - The path should look something like this, highlight the text and copy it:
+
+          C:\Users\acountname\miniconda3\envs\envAudio\python.exe
+
+Add intrepreter to UI.java:
+
+  - Find the line that looks like this in the UI.java script:
+
+        public String pythonExe = "C:\path\to\python.exe";
+
+ - Update the path with the text just copied:
+
+        public String pythonExe = "C:\Users\acountname\miniconda3\envs\envAudio\python.exe";
