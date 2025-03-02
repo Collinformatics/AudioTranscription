@@ -97,7 +97,9 @@ Next we will need to set up Python.
 
     - Python interpreter setup
       
-    - GPU Usage (this is only relevant if your computer has an NVIDIA graphics card)
+    - GPU Usage
+
+      - Only relevant if your computer has an NVIDIA graphics card
 
     If the test is passed, the path to your interpreter should printed on the first line of your console
 
