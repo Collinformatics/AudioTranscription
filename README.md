@@ -123,9 +123,9 @@ Set up Python.
 
               Click on the "OK" button to create the interpreter
 
-              ![Python Intrepreter](https://github.com/user-attachments/assets/db97ecc3-c3eb-4de5-8112-c846822152fd)
+![Python Intrepreter](https://github.com/user-attachments/assets/89a92b21-8db9-4840-be44-7583b9300efb)
 
-
+              
 - Add Python Interpreter to IDE
 
   In the "Project Structure" window, click on "Modules"
