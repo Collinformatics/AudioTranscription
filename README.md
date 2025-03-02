@@ -123,7 +123,7 @@ Show all conda environments:
 
     conda env list
 
-  - Find your environment and acitvate it:
+Find your environment and acitvate it:
 
         conda activate envAudio
 
