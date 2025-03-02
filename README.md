@@ -129,16 +129,16 @@ Install modules:
 
         conda activate envAudio
 
-  - Install necessary python modules:
+  Install necessary python modules:
 
-        pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+      pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 
-        pip install deepmultilingualpunctuation
+      pip install deepmultilingualpunctuation
 
-        pip install faster-whisper
+      pip install faster-whisper
 
-        pip install PyAudio
+      pip install PyAudio
 
-        pip install soundfile
+      pip install soundfile
 
-        pip install SpeechRecognition
+      pip install SpeechRecognition
