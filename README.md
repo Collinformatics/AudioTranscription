@@ -39,6 +39,9 @@ Clone github repository:
 
   * Make instructions <---------------------------------------------------------------------
 
+    ![Java IDE](https://github.com/user-attachments/assets/981bd7fd-4c48-4e73-8d66-636527f70055)
+
+
 Next we will need to set up Python.
 
 - Install Python plugin at:
