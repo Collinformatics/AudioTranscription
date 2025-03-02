@@ -58,26 +58,38 @@ Install JavaFX Plugin:
     
       - Find the "JavaFX" option in right column and select it
    
-      - Name the module, and click on the "Next" buton
+      - Name the module as "JavaFX", and click on the "Next" buton
 
       ![JavaFX](https://github.com/user-attachments/assets/e9ba349c-4117-4534-9c9c-6fc48a646ce8)
 
-  - 
+        - A new popup will offer the option to install additonal libaries, don't worry about adding any of them
+        
+        - Click on the "Create" button
+          
+  - After its added, you will be back at the "Project Structure" window
+
+    - Make sure the "JavaFX" module we just created is selected
+    
+      - Set the "Language Level" to 21
+
+      - Click on the "Apply" button
+
+      - Click on the "OK" button
 
 
 Set up Python.
 
 - Install Python plugin at:
 
-  Once your back at the "Project Structure"
+  Reopen the "Project Structure" window
 
-  Click on Modules in the left column, select the folder for your project in the column to the right
+  - Click on "Modules"
 
-  Then click the "+" icon, and click on "New Module" in the drop down window
+    Then click the "+" icon, and click on "New Module" in the drop down window
 
-  Click on "More via plugins" in the bottom left corner of the "New Module" window
+    Click on "More via plugins" in the bottom left corner of the "New Module" window
 
-  In the "Install Plugin" popup, click on "Python" to add the module
+    - In the "Install Plugin" popup, click on "Python" to add the module
 
   Restart the IDE
 
