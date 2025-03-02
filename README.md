@@ -234,4 +234,4 @@ Now you need to add intrepreter to UI.java:
 
 - The program will save your transcribed messages in the 'logs" folder
 
-  - Open log.txt to view and edit the text
+  - Open "log.txt" to view and edit the text
