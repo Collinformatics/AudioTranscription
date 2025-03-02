@@ -95,7 +95,7 @@ Next we will need to set up Python.
 
     Run test.py to evaluate:
 
-    - Python interpreter setup
+    - If the Python interpreter was setup correctly
       
     - GPU Usage
 
