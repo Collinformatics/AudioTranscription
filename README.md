@@ -8,17 +8,6 @@ This program will allow you to record a message, and convert an audio recording 
 # Recomened Software for Instalation:
 
 - IntelliJ Idea Community Edition 2024.3.4
-  - With JavaFX plugin installed
-    
-    - Download at:
-    
-          https://gluonhq.com/products/javafx/
-    
-      - Versions: (If one fails then try the other)
-        - 21.0.6 [LTS] (Use if your running Java version 23.X.X in your envioronment)
-        - 17.0.14 [LTS]
-    
-      - Type: SDK
 
 - Miniconda3
 
