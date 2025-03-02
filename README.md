@@ -79,7 +79,7 @@ Install JavaFX Plugin:
 
 Set up Python.
 
-- Install Python plugin at:
+- Install Python:
 
   Reopen the "Project Structure" window
 
@@ -89,27 +89,42 @@ Set up Python.
 
     Click on "More via plugins" in the bottom left corner of the "New Module" window
 
-    - In the "Install Plugin" popup, click on "Python" to add the module
+    - In the "Install Plugin" popup, click on "Python Community Edition"
 
-  Restart the IDE
+      - Click on the "Install" button 
+
+      - Then click on the "Restart IDE" button
 
 - Create Python Interpreter:
 
-  Go back to the "Project Structure" window, under the left column select "SDKs"
+  - Go back to the "Project Structure" window, under the left column select "SDKs"
 
-  Click the "+" icon, and click on "Add Python SDK from disk"
+    Click the "+" icon, and click on "Add Python SDK from disk"
 
-  In the new pop up window select "Conda Environment"
+    - Create Python envrionment:
 
-  Select the option "New Environment"
+      - In the new pop up window select "Conda Environment"
 
-  In the "Location:" input bar make sure the path contains: 
+        Select the option "New Environment"
 
-  - miniconda3\envs\evnAudio
-  
-  My interpreter will be named "evnAudio" but you can change this to name it whatever you want, just make sure that no other interpreters in the "envs" folder have the same name
+        - Name the virtual environment:
+        
+          - In the "Location:" input bar the path should contain something similar to:
+         
+                   /Users/accountname/miniconda3/envs/AudioTranscription
 
-  Press the "OK" button to create the interpreter
+            - Lets change it to:
+
+                      /Users/accountname/miniconda3/envs/evnAudio
+
+              This will name the virtual environment as: "evnAudio"
+
+                - My interpreter will be named "evnAudio" but you can change this to name it whatever you want, just make sure that no other interpreters in the "envs" folder have the same name
+
+              Click on the "OK" button to create the interpreter
+
+              ![Python Intrepreter](https://github.com/user-attachments/assets/db97ecc3-c3eb-4de5-8112-c846822152fd)
+
 
 - Add Python Interpreter to IDE
 
