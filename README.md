@@ -151,9 +151,8 @@ Install modules:
 
   - If the command line starts with: (envAudio)
 
-    - Then the conda envrionment has been activated, and you can proceed to the line:
+    - Then the conda envrionment has been activated, and you can proceed to the "pip install" commands
 
-      "When your environment has been activated:"
    
 - If it starts with: (base)
 
@@ -169,19 +168,23 @@ Install modules:
 
 - When your environment has been activated:
 
-- Install necessary python modules:
+  - Install necessary python modules:
 
-      pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+          pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+      
+          pip install deepmultilingualpunctuation
+      
+          pip install faster-whisper
+      
+          pip install PyAudio
+      
+          pip install soundfile
+      
+          pip install SpeechRecognition
 
-      pip install deepmultilingualpunctuation
+- If you want to deactivate the conda envrionment then enter the command:
 
-      pip install faster-whisper
-
-      pip install PyAudio
-
-      pip install soundfile
-
-      pip install SpeechRecognition
+        conda deactivate
 
 # Testing installation:
 
