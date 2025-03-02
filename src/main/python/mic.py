@@ -61,8 +61,8 @@ def recordAudio():
             text = f'{recognizer.recognize_faster_whisper(audio).strip()}'
             if text != '' and text != '.  .  .  .':
                 print('_text_')
-            print(f'_text_{text}')
-            logConversation(pathDirLogs, text)
+                print(f'_text_{text}')
+                logConversation(pathDirLogs, text)
 
         except sr.UnknownValueError:
             print('_text_Error: I could not understand the audio.')
