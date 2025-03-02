@@ -121,11 +121,13 @@ Install modules:
 
 - Go to the Intillij terminal:
 
-- Show all conda environments:
+- Activate conda environment and pip install
+  
+  Show all conda environments:
 
       conda env list
 
-- Find your environment and acitvate it:
+  Find your environment and acitvate it:
 
         conda activate envAudio
 
