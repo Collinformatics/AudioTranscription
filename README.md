@@ -87,12 +87,6 @@ Next we will need to set up Python.
 
   If it matches, then click on the "Apply" button and close the window.
 
-  - Testing Python Interpreter:
-
-    Follow the folders in your IDE to:
-
-        AudioTranscription\src\main\python\test.py
-
 Install modules:
 
 - Go to the Intillij terminal:
@@ -123,7 +117,13 @@ Install modules:
 
 # Testing installation:
 
-  Run test.py to evaluate:
+Testing Python Interpreter:
+
+- Follow the folders in your IDE to:
+
+      AudioTranscription\src\main\python\test.py
+
+- Run test.py to evaluate:
 
   - If the Python interpreter was setup correctly
       
