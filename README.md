@@ -223,3 +223,15 @@ Now you need to add intrepreter to UI.java:
 - Update the path with the text just copied:
 
       public String pythonExe = "C:\Users\acountname\miniconda3\envs\envAudio\python.exe";
+
+# Running The Program:
+
+- Follow the path the the UI.java file:
+
+      AudioTranscription/src/main/java/com.example.audiotranscription/UI.java
+
+  - Open the file and run the code to create the UI for the program
+
+- The program will save your transcribed messages in the 'logs" folder
+
+  - Open log.txt to view and edit the text
