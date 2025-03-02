@@ -131,18 +131,24 @@ Testing Python Interpreter:
 
     - Only relevant if your computer has an NVIDIA graphics card
 
-    If the test is passed, the path to your interpreter should printed on the first line of your console
+  The results are displyed in the console
+
+  - If the test is passed, the path to your interpreter should printed on the first line of your console
 
     - The path should look something like this, highlight the text and copy it:
 
           C:\Users\acountname\miniconda3\envs\envAudio\python.exe
 
-Add intrepreter to UI.java:
+Now you need to add intrepreter to UI.java:
 
-  - Find the line that looks like this in the UI.java script:
+- Found at:
 
-        public String pythonExe = "C:\path\to\python.exe";
+      C:\AudioTranscription\src\main\java\com.example.audiotranscription\UI.java
 
- - Update the path with the text just copied:
+- Find the line that looks like this in the UI.java script:
 
-        public String pythonExe = "C:\Users\acountname\miniconda3\envs\envAudio\python.exe";
+      public String pythonExe = "C:\path\to\python.exe";
+
+- Update the path with the text just copied:
+
+      public String pythonExe = "C:\Users\acountname\miniconda3\envs\envAudio\python.exe";
