@@ -7,7 +7,7 @@ This program will allow you to record a message, and convert an audio recording 
 
 # Recomened Software for Instalation:
 
-- Intellij Idea Community Edition 2024.3.4
+- IntelliJ Idea Community Edition 2024.3.4
   - With JavaFX plugin installed
     
     - Download at:
@@ -31,22 +31,46 @@ This program will allow you to record a message, and convert an audio recording 
 
 # Installing Program:
 
-- These instruction were made for working with an Intellij Idea IDE
+- These instruction were made for working with an IntelliJ Idea IDE
 
 Download recommended software before continuing.
 
 Clone github repository:
 
-  * Make instructions <---------------------------------------------------------------------
-
+- Click on "Clone Repository" from the IntelliJ start menu
+  
     ![Java IDE](https://github.com/user-attachments/assets/981bd7fd-4c48-4e73-8d66-636527f70055)
 
+- Paste the repository path into the URL input, and click on the "Clone" button:
 
-Next we will need to set up Python.
+      https://github.com/Collinformatics/AudioTranscription
+
+Setup the Project JDK:
+
+- Open the "File" dropdown, and click on "Project Structure"
+
+  - In the new popup window, click on "SKDs" in the left column, select the folder for your project in the column to the right
+
+  - Find the "+" icon at the top of the column to the right
+
+    - Click on the "+" and select "Download JDK" in the drop down window
+    
+    - Click the "Download" in the new window
+
+       ![Java SDK](https://github.com/user-attachments/assets/6034a252-b284-40e4-8b28-cbd0a5aadc43)
+
+Install JavaFX Plugin:
+
+- Once you are back at the "Project Structure" window, click on "Modules", then go to the column on the right "AudioTranscription" folder, then click on the "+" icon
+
+
+
+
+Set up Python.
 
 - Install Python plugin at:
 
-  Open the "File" dropdown and select "Project Structure"
+  Once your back at the "Project Structure"
 
   Click on Modules in the left column, select the folder for your project in the column to the right
 
