@@ -17,7 +17,7 @@ def logConversation(pathDirectory, text):
         os.makedirs(pathDirectory)
 
     # Log the message
-    pathDirLogs = os.path.join(pathDirectory + r'\log.txt')
+    pathDirLogs = os.path.join(pathDirectory, nameLog)
     with open(pathDirLogs, 'a') as file:
         # Append: 'a'
         # Write: 'w'
@@ -31,7 +31,7 @@ def loadMessages(pathDirectory):
         os.makedirs(pathDirectory)
 
     # Load the messages
-    pathLog = os.path.join(pathDirectory + r'\log.txt')
+    pathLog = os.path.join(pathDirectory, nameLog)
     if os.path.exists(pathLog):
         with open(pathLog, 'r') as file:
             messages = file.readlines()
