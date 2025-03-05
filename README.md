@@ -8,7 +8,8 @@ This program will allow you to record a message, and convert an audio recording 
 # Recomened Software for Instalation:
 
 - IntelliJ Idea Community Edition 2024.3.4
-      - Other versions (or other IDEs) would work, but the installation steps might be slightly different
+
+  - Other versions (or other IDEs) would work, but the installation steps might be slightly different
 
 - Miniconda3
 
