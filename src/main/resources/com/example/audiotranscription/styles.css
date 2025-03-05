@@ -1,0 +1,53 @@
+/* Hide the scroll bar arrow buttons and remove the space they occupy */
+.text-area .scroll-bar .increment-button,
+.text-area .scroll-bar .decrement-button {
+    -fx-background-color: transparent;  /* Make buttons invisible */
+    -fx-opacity: 0;  /* Make buttons fully transparent */
+    -fx-padding: 0;  /* Remove padding */
+    -fx-pref-width: 0; /* Remove width for buttons */
+    -fx-pref-height: 0; /* Remove height for buttons */
+}
+
+/* Color: Scrollbar background */
+.text-area .scroll-bar {
+    -fx-background-color: #252525; /* Black background */
+}
+
+/* Color: Scrollbar thumb */
+.text-area .scroll-bar .thumb {
+    -fx-background-color: #303030; /* Dark gray thumb */
+    -fx-background-radius: 5px;
+}
+
+/* Color: Scrollbar track */
+.text-area .scroll-bar .track {
+    -fx-background-color: #202020; /* Darker track */
+}
+
+
+/* Right click menu in the textbox */
+.context-menu {
+    -fx-background-color: #101010;  /* Custom background */
+    -fx-text-fill: #00FF00;         /* Custom text color (green) */
+    -fx-border-color: #505050;      /* Border color */
+    -fx-border-width: 2px;          /* Border width */
+}
+
+/* Styling individual menu items in the context menu */
+.context-menu .menu-item {
+    -fx-background-color: #151515;  /* Darker background for menu items */
+    -fx-text-fill: #00FF00;         /* Default text color (green) for menu items */
+    -fx-padding: 2px 2px;           /* Add padding to menu items */
+}
+
+/* Change background and text color on hover for menu items */
+.context-menu .menu-item:hover {
+    -fx-background-color: #003000;  /* Darker background on hover */
+    -fx-text-fill: #EE00FF;         /* Purple text color on hover */
+}
+
+/* Change background and text color when menu item is selected */
+.context-menu .menu-item:focused {
+    -fx-background-color: #003000;  /* Darker background when focused */
+    -fx-text-fill: #EE00FF;         /* Purple text color when focused */
+}
