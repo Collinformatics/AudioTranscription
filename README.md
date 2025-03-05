@@ -63,7 +63,7 @@ Install JavaFX Plugin:
       - Name the module as "JavaFX", and click on the "Next" buton
 
       ![JavaFX](https://github.com/user-attachments/assets/e9ba349c-4117-4534-9c9c-6fc48a646ce8)
-
+  
         - A new popup will offer the option to install additonal libaries, don't worry about adding any of them
         
         - Click on the "Create" button
