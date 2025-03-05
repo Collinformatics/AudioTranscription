@@ -30,7 +30,7 @@ Clone github repository:
 
 - Click on "Clone Repository" from the IntelliJ start menu
   
-    ![Java IDE](https://github.com/user-attachments/assets/981bd7fd-4c48-4e73-8d66-636527f70055)
+![Java IDE](https://github.com/user-attachments/assets/981bd7fd-4c48-4e73-8d66-636527f70055)
 
 - Paste the repository path into the URL input, and click on the "Clone" button:
 
@@ -48,7 +48,7 @@ Setup the Project JDK:
     
     - Click the "Download" in the new window
 
-       ![Java SDK](https://github.com/user-attachments/assets/6034a252-b284-40e4-8b28-cbd0a5aadc43)
+  ![Java SDK](https://github.com/user-attachments/assets/6034a252-b284-40e4-8b28-cbd0a5aadc43)
 
 Install JavaFX Plugin:
 
@@ -125,7 +125,7 @@ Set up Python.
 
               Click on the "OK" button to create the virtual environment
 
-              ![Python Intrepreter](https://github.com/user-attachments/assets/89a92b21-8db9-4840-be44-7583b9300efb)
+            ![Python Intrepreter](https://github.com/user-attachments/assets/89a92b21-8db9-4840-be44-7583b9300efb)
 
               When you get back to the "Project Structure" window, click on the "Apply" button
 
