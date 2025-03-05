@@ -236,4 +236,12 @@ Now you need to add intrepreter to UI.java:
 
 - The program will save your transcribed messages in the "logs" folder
 
-  - Open "log.txt" to view and edit the text
+  - The default name is "log.txt"
+    
+    - Open the file to view and edit the recorded text
+ 
+  - You can make new files by:
+
+    - TO DO: Add in dropdown <------------------------------------------
+
+       
