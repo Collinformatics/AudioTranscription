@@ -147,7 +147,7 @@ Set up Python.
 
 Install modules:
 
-- Go to the Intillij terminal:
+- Go to the IntelliJ terminal:
 
   - If the command line starts with: (envAudio)
 
