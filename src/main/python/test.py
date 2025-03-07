@@ -1,11 +1,11 @@
 print('The Python interpreter was successfully configured\n\n'
-      'Loading GPU Configuration\n')
+      'Evaluating GPU Configuration\n')
 
 from faster_whisper import WhisperModel
 import torch
 
 # Display device usage
-device = "cuda" if torch.cuda.is_available() else "cpu"
+device = "cuda" if torch.cuda.is_available() else "CPU"
 model = WhisperModel("base", device=device)
 print("Model Device:", model.model.device)
 print("CUDA Available:", torch.cuda.is_available())
