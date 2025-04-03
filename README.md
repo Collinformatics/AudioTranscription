@@ -168,12 +168,20 @@ Install modules:
 
               conda activate envAudio
 
-- When your environment has been activated:
+- When your virtual environment has been activated, you will need to install the following modules:
 
-  - Install necessary python modules:
+  - How you install PyTorch will depend on the computer you are using
 
+    - If your computer has an NVIDIA GPU use this command:
+          
           pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-      
+    
+    - For MacOS, or if your computer does not have an NVIDIA GPU use this command:
+          
+          pip install torch torchvision torchaudio
+  
+  - Install the remaining modules:
+  
           pip install deepmultilingualpunctuation
       
           pip install faster-whisper
@@ -184,7 +192,8 @@ Install modules:
       
           pip install SpeechRecognition
 
-- If you want to deactivate the conda envrionment then enter the command:
+
+- Also: If you want to deactivate the conda envrionment then enter the command:
 
         conda deactivate
 
