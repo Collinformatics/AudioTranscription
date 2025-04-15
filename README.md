@@ -147,7 +147,7 @@ Set up Python.
           Click on the "Apply" button to add the interpreter
 
 
-Install modules:
+Install Modules:
 
 - Go to the IntelliJ terminal:
 
