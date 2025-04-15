@@ -183,13 +183,9 @@ Install modules:
   - Install the remaining modules:
   
           pip install deepmultilingualpunctuation
-      
           pip install faster-whisper
-      
           pip install PyAudio
-      
           pip install soundfile
-      
           pip install SpeechRecognition
 
 
